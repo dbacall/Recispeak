@@ -1,7 +1,6 @@
 # RecipeCam
 
-<!-- Need to update badges for new project -->
-<a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a> <a href="https://codeclimate.com/github/codeclimate/codeclimate/test_coverage"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage" /></a>
+<a href="https://codeclimate.com/github/dbacall/Speakipe/maintainability"><img src="https://api.codeclimate.com/v1/badges/e15ffaeec6a3a2d033c8/maintainability" /></a> <a href="https://codeclimate.com/github/dbacall/Speakipe/test_coverage"><img src="https://api.codeclimate.com/v1/badges/e15ffaeec6a3a2d033c8/test_coverage" /></a>
 
 [Quick start](#quick-start) | [User stories](#user-stories) | [Tech used](#tech-used)
 
