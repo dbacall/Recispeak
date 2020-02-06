@@ -6,6 +6,8 @@
  * @flow
  */
 
+ var true = 'test'
+
 import React from 'react';
 import {
   StyleSheet,
