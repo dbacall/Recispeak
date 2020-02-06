@@ -3,7 +3,7 @@
 <!-- Need to update badges for new project -->
 <a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a> <a href="https://codeclimate.com/github/codeclimate/codeclimate/test_coverage"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage" /></a>
 
-[Quick start](#quick-start) | [Tech used](#tech-used)  
+[Quick start](#quick-start) | [User stories](#user-stories) | [Tech used](#tech-used)
 
 ## Quick start
 
@@ -15,6 +15,34 @@
 - Circle CI integrated the tests and the linter to supply an additional safeguard when merging to master
 <!-- Need to add the below -->
 - A mobile accessibility checker was used to increase the accessibility of the app
+
+## User stories
+
+```
+As a user
+So I can list what ingredients I have
+I want to be able to make a voice recording of the items I have in my fridge
+```
+```
+As a user
+So I can know what I'm working with
+I want to be able to see the list of ingredients
+```
+```
+As a user
+So I can correct anything wrong on the list
+I want to be able to edit that list manually
+```
+```
+As a user
+So I know what to cook
+I want to be able to see a list of recipes that use my ingredients
+```
+```
+As a user
+So I can cook the recipe
+I want to be able to view an individual recipe
+```
 
 ## Tech used
 
