@@ -1,6 +1,6 @@
 # RecipeCam
 
-<a href="https://codeclimate.com/github/dbacall/Speakipe/maintainability"><img src="https://api.codeclimate.com/v1/badges/e15ffaeec6a3a2d033c8/maintainability" /></a> <a href="https://codeclimate.com/github/dbacall/Speakipe/test_coverage"><img src="https://api.codeclimate.com/v1/badges/e15ffaeec6a3a2d033c8/test_coverage" /></a>
+<a href="https://codeclimate.com/github/dbacall/Speakipe/maintainability"><img src="https://api.codeclimate.com/v1/badges/e15ffaeec6a3a2d033c8/maintainability" /></a> <a href="https://codeclimate.com/github/dbacall/Speakipe/test_coverage"><img src="https://api.codeclimate.com/v1/badges/e15ffaeec6a3a2d033c8/test_coverage" /></a> [![CircleCI](https://circleci.com/gh/dbacall/Speakipe.svg?style=svg)](https://circleci.com/gh/dbacall/Speakipe)
 
 [Quick start](#quick-start) | [User stories](#user-stories) | [Tech used](#tech-used)
 
