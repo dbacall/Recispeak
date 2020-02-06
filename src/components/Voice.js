@@ -75,16 +75,16 @@ async _startRecognition(e) {
           )}
           <Button style={styles.transcript}
           onPress={this._startRecognition.bind(this)}
-          title="Start"></Button> 
+          title="Start"></Button>
         </View>
       );
     } else
-    <Navigator
-    {this.props.navigator.push({
-      component: Ingredients,
-      passProps: {ingredients: this.state.results},
-    });}
-    />
+    <Navigator>
+      {this.props.navigator.push({
+        component: Ingredients,
+        passProps: {ingredients: this.state.results},
+      })}
+    </Navigator>
   }
 }
 const styles = StyleSheet.create({
