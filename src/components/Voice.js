@@ -1,59 +1,38 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  AppRegistry,
-  Navigator,
-} from 'react-native';
+import {StyleSheet, Text, View, Button, AppRegistry} from 'react-native';
 import Voice from 'react-native-voice';
-import Ingredients from './Ingredients'
+import Ingredients from './Ingredients';
 
 export default class VoiceNative extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // recognized: '',
       started: '',
-      // ended: '',
       results: [],
     };
     Voice.onSpeechStart = this.onSpeechStart.bind(this);
-    // Voice.onSpeechRecognized = this.onSpeechRecognized.bind(this);
-    // Voice.onSpeechEnd = this.onSpeechEnd.bind(this);
     Voice.onSpeechResults = this.onSpeechResults.bind(this);
   }
-componentWillUnmount() {
+
+  componentWillUnmount() {
     Voice.destroy().then(Voice.removeAllListeners);
   }
-onSpeechStart(e) {
+
+  onSpeechStart() {
     this.setState({
       started: '√',
     });
-  };
-// onSpeechRecognized(e) {
-//     this.setState({
-//       recognized: '√',
-//     });
-//   };
-// onSpeechEnd(e) {
-//   setTimeout(function(){this.setState({
-//     ended: '√',
-//   })
-//   }, 3000);
-// };
-onSpeechResults(e) {
+  }
+
+  onSpeechResults(e) {
     this.setState({
       results: e.value,
     });
   }
 
-async _startRecognition(e) {
+  async _startRecognition() {
     this.setState({
-      recognized: '',
       started: '',
-      ended: '',
       results: [],
     });
     try {
@@ -63,30 +42,27 @@ async _startRecognition(e) {
     }
   }
 
-  render () {
-    if (this.state.results.length == 0) {
-      return (
-        <View>
-          <Text style={styles.transcript}>
-              Transcript
+  render() {
+    return this.state.results.length ? (
+      <Ingredients ingredients={this.state.results} />
+    ) : (
+      <View>
+        <Text style={styles.transcript}>Transcript</Text>
+        {this.state.results.map((result, index) => (
+          <Text key={result + index} style={styles.transcript}>
+            {result}
           </Text>
-          {console.log(this.state.results)}
-          {this.state.results.map((result, index) => <Text style={styles.transcript}> {result}</Text>
-          )}
-          <Button style={styles.transcript}
+        ))}
+        <Button
+          style={styles.transcript}
           onPress={this._startRecognition.bind(this)}
-          title="Start"></Button> 
-        </View>
-      );
-    } else
-    <Navigator
-    {this.props.navigator.push({
-      component: Ingredients,
-      passProps: {ingredients: this.state.results},
-    });}
-    />
+          title="Start"
+        />
+      </View>
+    );
   }
 }
+
 const styles = StyleSheet.create({
   transcript: {
     textAlign: 'center',
@@ -95,4 +71,5 @@ const styles = StyleSheet.create({
     top: '400%',
   },
 });
+
 AppRegistry.registerComponent('VoiceNative', () => VoiceNative);

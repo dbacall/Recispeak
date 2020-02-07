@@ -1,0 +1,14 @@
+{
+  "annotations": [
+      {
+          "annotation": "cheeseburger",
+          "image": "https://spoonacular.com/menuItemImages/cheeseburger.jpg",
+          "tag": "dish"
+      },
+      {
+          "annotation": "mushrooms",
+          "image": "https://spoonacular.com/cdn/ingredients_100x100/mushrooms.png",
+          "tag": "ingredient"
+      }
+  ]
+}
