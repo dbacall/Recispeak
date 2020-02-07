@@ -37,10 +37,8 @@ export default class RecipesList extends Component {
     return fetch(url)
     .then((response) => response.json())
     .then((responseJson) => {
-      console.log(responseJson)
       this.setState({
-        // recipesData: responseJson,
-        recipesData: Object.keys(responseJson).map(i => responseJson[i]),
+        recipesData: responseJson,
         isLoading: false,
       })
     })
@@ -50,27 +48,31 @@ export default class RecipesList extends Component {
   }
 
   render() {
-    if(this.state.isLoading) {
-      return (
-        <View>
-          <ActivityIndicator/>
-        </View>
-      )
-    }else {
-      return (
-        <ScrollView>
-          {this.state.recipesData.map((val, index) =>
-            <View key={index}>
-              <Text>{val}</Text>
-              <Image source={{uri: val['image']}}/>
-              <Text>{val['title']}</Text>
-              {val['missedIngredientCount'] > 0 &&
-              <Text>{val['missedIngredientCount']} missing ingredients</Text>}
-            </View>
-          )}
-        </ScrollView>
-      )
-    }
-  }
+    return this.state.recipesData.map((data, index) => {
+     return (
+       <Text> {data.title} </Text>,
+       <Text> {data.missingIngredientCount} </Text>
+      // <Image source={{uri: data.image }}/>
+     )
+   });
+    // if(this.state.isLoading) {
+    //   return (
+    //     <View>
+    //       <ActivityIndicator/>
+    //     </View>
+    //   )
+    // }else {
+    //   return this.state.recipesData.forEach((element, index) => {
+    //     return (
+    //       <ScrollView>
+    //         <Image source={{ uri: element.image }}/>
+    //         <Text> {element.text} </Text>
+    //         <Text> {element.missingIngredientCount} </Text>
+    //       </ScrollView>
+    //       // console.log(element)}
+    //     // </ScrollView>
+    //   )
+    // })
+  // }
 }
-
+}
