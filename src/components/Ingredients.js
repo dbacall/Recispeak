@@ -20,7 +20,7 @@ export default class IngredientsList extends Component {
   }
 
   componentDidMount() {
-    let transcript = ['pizza', 'ketchup', 'happy banana', 'nice to meet rice']
+    let transcript = ['avocado', 'ketchup', 'happy banana', 'nice to meet rice']
     let parameter = this.deleteWordDuplicates(transcript).join(' ');
     let body = 'text=' + parameter;
     this.fetchIngredients(body)
@@ -36,7 +36,7 @@ export default class IngredientsList extends Component {
     	method: 'POST',
     	headers: {
     		'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-    		'x-rapidapi-key': 'f0f1e14400msh41f43d9a29ab709p109febjsnb78b9a739bfa',
+    		'x-rapidapi-key': '3f8a28481emsh31cd7581ae57573p11e5e5jsn8ad19f6a81b9',
         Accept: 'application/json',
     		'content-type': 'application/x-www-form-urlencoded',
     	},
