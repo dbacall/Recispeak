@@ -8,7 +8,7 @@ import {
   Navigator,
 } from 'react-native';
 import Voice from 'react-native-voice';
-import Ingredients from './Ingredients'
+// import Ingredients from './Ingredients'
 
 export default class VoiceNative extends React.Component {
   constructor(props) {

@@ -8,7 +8,7 @@ import {
   Navigator,
   ActivityIndicator,
 } from 'react-native';
-import { API_KEY } from './utils/RapidApiSpoonacularApiKey';
+import { API_KEY } from '../utils/RapidApiSpoonacularApiKey';
 
 export default class IngredientsList extends Component {
   constructor(props) {
@@ -20,6 +20,7 @@ export default class IngredientsList extends Component {
   }
 
   componentDidMount() {
+    let transcript = ['pizza', 'ketchup', 'happy banana', 'nice to meet rice']
     let parameter = this.deleteWordDuplicates(transcript).join(' ');
     let body = 'text=' + parameter;
     this.fetchIngredients(body)
@@ -35,7 +36,7 @@ export default class IngredientsList extends Component {
     	method: 'POST',
     	headers: {
     		'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-    		'x-rapidapi-key': API_KEY,
+    		'x-rapidapi-key': 'f0f1e14400msh41f43d9a29ab709p109febjsnb78b9a739bfa',
         Accept: 'application/json',
     		'content-type': 'application/x-www-form-urlencoded',
     	},
@@ -61,12 +62,13 @@ export default class IngredientsList extends Component {
         </View>
       )
     } else {
-      let lists = this.state.ingredientsData.map(object => {
-        return <ScrollView>
-        <Text>{object["annotation"]}</Text>
+        return (
+          <ScrollView>
+          { this.state.ingredientsData.map((val, key) =>
+          <Text> {val["annotation"]} </Text> )}
       </ScrollView>
-      })
+    )
+      }
     }
-  }
 
 }

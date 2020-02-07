@@ -4,8 +4,9 @@ import IngredientsList from './src/components/Ingredients'
 
 const App: () => React$Node = () => {
   return (
-    <VoiceNative />,
-    <IngredientsList />
+    // For visibility, toggle between pages:
+    <VoiceNative />
+    // <IngredientsList />
   );
 };
 
