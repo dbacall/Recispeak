@@ -7,14 +7,17 @@ import {
   Button,
   ActivityIndicator,
 } from 'react-native';
+import RecipesList from './RecipesList';
+import { SPOONACULAR_API_KEY } from '../utils/RapidApiSpoonacularApiKey';
 
 export default class Ingredients extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
-      ingredientsData: [],
       ingredients: [],
+      ingredientsData: [],
+      ingredientsArray: [],
       apiKey: "",
     };
   }
@@ -53,10 +56,16 @@ export default class Ingredients extends Component {
         ingredientsData: responseJson.annotations,
         isLoading: false,
       })
+      this.setIngredientsArray()
     })
     .catch(err => {
     	console.log(err);
     });
+  }
+  setIngredientsArray() {
+    let array = [];
+    this.state.ingredientsData.map((val) => array.push(val.annotation));
+    this.setState({ ingredientsArray: array });
   }
   render() {
     if (this.state.isLoading) {
@@ -68,8 +77,9 @@ export default class Ingredients extends Component {
     } else {
         return (
           <ScrollView>
-          { this.state.ingredientsData.map((val, key) =>
-          <Text> {val["annotation"]} </Text> )}
+          { this.state.ingredientsArray.map((ingredient, key) =>
+            <Text key={key}> {ingredient} </Text>
+          )}
       </ScrollView>
     )
     }
