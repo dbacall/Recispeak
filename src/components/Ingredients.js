@@ -20,10 +20,12 @@ export default class Ingredients extends Component {
   }
 
   componentDidMount() {
-    let transcript = this.props.ingredients
-    let parameter = this.deleteWordDuplicates(transcript).join(' ');
-    let body = 'text=' + parameter;
-    this.fetchIngredients(body)
+    if (this.props.ingredients?.length) {
+      let transcript = this.props.ingredients;
+      let parameter = this.deleteWordDuplicates(transcript).join(' ');
+      let body = 'text=' + parameter;
+      this.fetchIngredients(body);
+    }
   }
   deleteWordDuplicates(transcript) {
     let wordsArray = transcript.join(' ').split(' ');
