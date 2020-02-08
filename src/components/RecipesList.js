@@ -48,31 +48,26 @@ export default class RecipesList extends Component {
   }
 
   render() {
-    return this.state.recipesData.map((data, index) => {
-     return (
-       <Text> {data.title} </Text>,
-       <Text> {data.missingIngredientCount} </Text>
-      // <Image source={{uri: data.image }}/>
-     )
-   });
-    // if(this.state.isLoading) {
-    //   return (
-    //     <View>
-    //       <ActivityIndicator/>
-    //     </View>
-    //   )
-    // }else {
-    //   return this.state.recipesData.forEach((element, index) => {
-    //     return (
-    //       <ScrollView>
-    //         <Image source={{ uri: element.image }}/>
-    //         <Text> {element.text} </Text>
-    //         <Text> {element.missingIngredientCount} </Text>
-    //       </ScrollView>
-    //       // console.log(element)}
-    //     // </ScrollView>
-    //   )
-    // })
-  // }
-}
+    if (this.state.isLoading) {
+      return (
+        <View>
+          <ActivityIndicator/>
+        </View>
+      )
+    } else {
+        return (
+          <ScrollView>
+            {this.state.recipesData.map((data, index) =>
+              <View key={index}>
+                <Image source={{uri: data.image}} style={{width: 400, height: 400}} />
+                <Text>
+                  <Text> {data.title} </Text>
+                  <Text> {'\n'}Missing ingredients: {data.missedIngredientCount} </Text>
+                </Text>
+                </View>
+            )}
+          </ScrollView>
+        )
+    }
+  }
 }
