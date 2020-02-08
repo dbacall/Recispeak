@@ -7,7 +7,6 @@ import {
   Button,
   ActivityIndicator,
 } from 'react-native';
-import { SPOONACULAR_API_KEY } from '../utils/RapidApiSpoonacularApiKey';
 
 export default class Ingredients extends Component {
   constructor(props) {
@@ -19,8 +18,6 @@ export default class Ingredients extends Component {
       apiKey: SPOONACULAR_API_KEY,
     };
   }
-
-  
 
   componentDidMount() {
     let transcript = this.props.ingredients
@@ -73,6 +70,6 @@ export default class Ingredients extends Component {
           <Text> {val["annotation"]} </Text> )}
       </ScrollView>
     )
-      }
     }
   }
+}
