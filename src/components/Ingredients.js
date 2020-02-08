@@ -15,7 +15,7 @@ export default class Ingredients extends Component {
       isLoading: true,
       ingredientsData: [],
       ingredients: [],
-      apiKey: SPOONACULAR_API_KEY,
+      apiKey: "",
     };
   }
 
