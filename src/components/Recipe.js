@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {ScrollView, Text, View, Image, ActivityIndicator} from 'react-native';
-import {API_KEY} from '../utils/SpoonacularApiKey';
 
 export default class Recipe extends Component {
   constructor(props) {
