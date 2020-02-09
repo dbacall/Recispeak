@@ -1,14 +1,7 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  Text,
-  View,
-  Image,
-  Navigator,
-  ActivityIndicator,
-} from 'react-native';
-import { API_KEY } from '../utils/SpoonacularApiKey';
+import React, {Component} from 'react';
+import {ScrollView, Text, View, Image, ActivityIndicator} from 'react-native';
+import {API_KEY} from '../utils/SpoonacularApiKey';
+
 export default class Recipe extends Component {
   constructor(props) {
     super(props);
@@ -19,85 +12,94 @@ export default class Recipe extends Component {
       id: 324694,
     };
   }
+
   componentDidMount() {
     let body = 'https://api.spoonacular.com/recipes/';
-    let id =  this.state.id;
+    let id = this.state.id;
     let end = '/information?includeNutrition=true&';
     let apiKey = 'apiKey=' + API_KEY;
-    let url = body + id + end + apiKey
-    this.fetchRecipe(url)
-    let bodyTwo = 'https://api.spoonacular.com/recipes/'
-    let endTwo = '/analyzedInstructions?'
-    let urlTwo = bodyTwo + id + endTwo + apiKey
-    this.fetchInstructions(urlTwo)
+    let url = body + id + end + apiKey;
+    this.fetchRecipe(url);
   }
+
   fetchRecipe(url) {
     return fetch(url)
-    .then((response) => response.json())
-    .then((responseJson) => {
-    console.log(responseJson)
-      this.setState({
-        recipeData: responseJson,
+      .then(response => response.json())
+      .then(responseJson => {
+        this.setState({
+          recipeData: responseJson,
+          isLoading: false,
+        });
       })
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      .catch(err => {
+        console.log(err);
+      });
   }
-  fetchInstructions(url) {
-    return fetch(url)
-    .then((response) => response.json())
-    .then((responseJson) => {
-      this.setState({
-        instructionsData: responseJson,
-        isLoading: false,
-      })
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  }
+
   render() {
-    // console.log(this.state.recipeData)
-    if(this.state.isLoading) {
+    let recipe = this.state.recipeData;
+    let ingredientsList = this.state.recipeData.extendedIngredients;
+    let instructions = this.state.recipeData.analyzedInstructions;
+
+    if (this.state.isLoading) {
       return (
         <View>
-          <ActivityIndicator/>
+          <ActivityIndicator />
         </View>
-      )
-    }else {
+      );
+    } else {
       return (
         <ScrollView>
-          {this.state.recipeData.map((element, index) =>
-            <View key={index}>
-              <Image source={{ uri: element.image}} style={{width: 400, height: 400}}/>
+          <View>
+            <Image
+              source={{uri: recipe.image}}
+              style={{width: 400, height: 400}}
+            />
+            <Text>
+              <Text>{recipe.title} </Text>
               <Text>
-                 <Text> {element.title} </Text>
-                <Text> {'\n'}{element.readyInMinutes} </Text>
-                <Text> {'\n'}{element.servings} </Text>
-                {element.extendedIngredients.map((item) =>
-                  <Text> {'\n'}{item.original} </Text>
-                )}
+                {' '}
+                {'\n'}
+                {recipe.readyInMinutes} minutes
               </Text>
-            </View>
-          )}
-          {this.state.instructionsData.map((step) =>
-            <View>
               <Text>
-              {step.name.length > 0 &&
-                <Text> {step.name} </Text>}
-              {step.map((instruction) =>
+                {' '}
+                {'\n'}
+                {recipe.servings} servings
+              </Text>
+              {ingredientsList.map((j, k) => (
                 <Text>
-                  <Text> {'\n'}{instruction.number} </Text> 
-                  <Text> {'\n'}{instruction.step} </Text> 
+                  {' '}
+                  {'\n'}
+                  {ingredientsList[k].original}{' '}
                 </Text>
-              )}
+              ))}
+            </Text>
+          </View>
+
+          <View>
+            {instructions.map((item, key) => (
+              <Text>
+                {instructions[key].name.length > 0 && (
+                  <Text>{instructions[key].name}</Text>
+                )}
+                {instructions[key].steps.map((i, k) => (
+                  <Text>
+                    <Text>
+                      {'\n'}
+                      {instructions[key].steps[k].number}
+                    </Text>
+                    <Text>
+                      {'\n'}
+                      {instructions[key].steps[k].step}
+                    </Text>
+                  </Text>
+                ))}
               </Text>
-            </View>
-            )}
-          // ! LOOK INTO IF ANY IDs DON'T COME WITH INSTRUCTIONS !
+            ))}
+          </View>
         </ScrollView>
-      )
+      );
     }
   }
 }

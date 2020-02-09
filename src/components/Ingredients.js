@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  Text,
-  View,
-  Button,
-  ActivityIndicator,
-} from 'react-native';
+import {ScrollView, Text, View, Button, ActivityIndicator} from 'react-native';
 import RecipesList from './RecipesList';
 import {SPOONACULAR_API_KEY} from '../utils/RapidApiSpoonacularApiKey';
 

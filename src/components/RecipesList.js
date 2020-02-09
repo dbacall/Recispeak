@@ -1,14 +1,5 @@
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  Text,
-  View,
-  Image,
-  Button,
-  Navigator,
-  ActivityIndicator,
-} from 'react-native';
+import {ScrollView, Text, View, Image, ActivityIndicator} from 'react-native';
 import {API_KEY} from '../utils/SpoonacularApiKey';
 
 export default class RecipesList extends Component {
