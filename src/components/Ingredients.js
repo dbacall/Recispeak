@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {ScrollView, Text, View, Button, ActivityIndicator} from 'react-native';
 import RecipesList from './RecipesList';
+// import {SPOONACULAR_API_KEY} from '../utils/RapidApiSpoonacularApiKey';
 
 export default class Ingredients extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ export default class Ingredients extends Component {
       this.fetchIngredients(body);
     }
   }
+
   deleteWordDuplicates(transcript) {
     let wordsArray = transcript.join(' ').split(' ');
     return wordsArray.filter((a, b) => wordsArray.indexOf(a) === b);
@@ -64,9 +66,8 @@ export default class Ingredients extends Component {
 
   setShowRecipesState() {
     this.setState({
-        showRecipes: true
-    })
-    
+      showRecipes: true,
+    });
   }
 
   render() {
@@ -84,14 +85,12 @@ export default class Ingredients extends Component {
           ))}
           <Button
             title="See Recipes"
-            onPress={ () => this.setShowRecipesState() }
+            onPress={() => this.setShowRecipesState()}
           />
         </ScrollView>
       );
     } else {
-      return (
-        <RecipesList ingredients={this.state.ingredients} />
-      )
+      return <RecipesList ingredients={this.state.ingredients} />;
     }
   }
 }
