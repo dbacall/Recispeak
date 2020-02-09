@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -7,22 +7,25 @@ import {
   Button,
   ActivityIndicator,
 } from 'react-native';
+import RecipesList from './RecipesList';
+import {SPOONACULAR_API_KEY} from '../utils/RapidApiSpoonacularApiKey';
 
 export default class Ingredients extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
-      ingredientsData: [],
+      transcript: [],
       ingredients: [],
-      apiKey: "",
+      apiKey: '',
     };
   }
 
   componentDidMount() {
-    if (this.props.ingredients?.length) {
-      let transcript = this.props.ingredients;
-      let parameter = this.deleteWordDuplicates(transcript).join(' ');
+    if (this.props.transcript?.length) {
+      let parameter = this.deleteWordDuplicates(this.props.transcript).join(
+        ' ',
+      );
       let body = 'text=' + parameter;
       this.fetchIngredients(body);
     }
@@ -31,47 +34,60 @@ export default class Ingredients extends Component {
     let wordsArray = transcript.join(' ').split(' ');
     return wordsArray.filter((a, b) => wordsArray.indexOf(a) === b);
   }
-  fetchIngredients(body, url = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/detect') {
+
+  fetchIngredients(
+    body,
+    url = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/detect',
+  ) {
     if (SPOONACULAR_API_KEY == null) {
-      this.state.apiKey = System.getenv("SPOONACULAR_API_KEY")
+      this.state.apiKey = System.getenv('SPOONACULAR_API_KEY');
     } else {
-      this.state.apiKey = SPOONACULAR_API_KEY
+      this.state.apiKey = SPOONACULAR_API_KEY;
     }
     fetch(url, {
-    	method: 'POST',
-    	headers: {
-    		'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-    		'x-rapidapi-key': this.state.apiKey,
+      method: 'POST',
+      headers: {
+        'x-rapidapi-host':
+          'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+        'x-rapidapi-key': this.state.apiKey,
         Accept: 'application/json',
-    		'content-type': 'application/x-www-form-urlencoded',
-    	},
-    	body: body,
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      body: body,
     })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      this.setState({
-        ingredientsData: responseJson.annotations,
-        isLoading: false,
+      .then(response => response.json())
+      .then(responseJson => {
+        let array = [];
+        responseJson.annotations.map(val => array.push(val.annotation));
+        this.setState({
+          ingredients: array,
+          isLoading: false,
+        });
       })
-    })
-    .catch(err => {
-    	console.log(err);
-    });
+      .catch(err => {
+        console.log(err);
+      });
   }
+
   render() {
     if (this.state.isLoading) {
       return (
         <View>
-          <ActivityIndicator/>
+          <ActivityIndicator />
         </View>
-      )
+      );
     } else {
-        return (
-          <ScrollView>
-          { this.state.ingredientsData.map((val, key) =>
-          <Text> {val["annotation"]} </Text> )}
-      </ScrollView>
-    )
+      return (
+        <ScrollView>
+          {this.state.ingredients.map((ingredient, key) => (
+            <Text key={key}> {ingredient} </Text>
+          ))}
+          <Button
+            title="See Recipes"
+            onPress={() => alert('To be linked to RecipesList')}
+          />
+        </ScrollView>
+      );
     }
   }
 }

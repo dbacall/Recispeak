@@ -44,7 +44,7 @@ export default class VoiceNative extends React.Component {
 
   render() {
     return this.state.results.length ? (
-      <Ingredients ingredients={this.state.results} />
+      <Ingredients transcript={this.state.results} />
     ) : (
       <View>
         <Text style={styles.transcript}>Transcript</Text>

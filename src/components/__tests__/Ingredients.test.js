@@ -11,7 +11,7 @@ describe('Ingredients component should work as expected', () => {
 
   beforeEach(() => {
     configure({adapter: new Adapter()});
-    wrapper = shallow(<Ingredients ingredients={[]} />);
+    wrapper = shallow(<Ingredients transcript={[]} />);
     component = wrapper.instance();
   });
 
