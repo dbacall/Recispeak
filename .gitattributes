@@ -1,3 +1,4 @@
 *.pbxproj -text
 
 Ingredients.js filter=gitignore
+RecipeList.js filter=gitignore
