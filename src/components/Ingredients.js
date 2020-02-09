@@ -82,6 +82,10 @@ export default class Ingredients extends Component {
           {this.state.ingredients.map((ingredient, key) => (
             <Text key={key}> {ingredient} </Text>
           ))}
+          <Button
+            title="See Recipes"
+            onPress={() => alert('To be linked to RecipesList') }
+          />
         </ScrollView>
       );
     }
