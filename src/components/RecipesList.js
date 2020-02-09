@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {ScrollView, Text, View, Image, ActivityIndicator} from 'react-native';
+// import {API_KEY} from '../utils/RapidApiSpoonacularApiKey';
 
 export default class RecipesList extends Component {
   constructor(props) {
@@ -7,16 +8,23 @@ export default class RecipesList extends Component {
     this.state = {
       isLoading: true,
       recipesData: [],
-      ingredients: [],
+      ingredients: this.props.ingredients,
       ignorePantry: false,
     };
   }
   componentDidMount() {
+    
     let body =
       'https://api.spoonacular.com/recipes/findByIngredients?ranking=1&number=2';
     let parameter = '&ingredients=' + this.state.ingredients.join(',');
     let ignorePantry = '&ignorePantry=' + this.state.ignorePantry.toString();
-    let apiKey = '&apiKey=' + API_KEY;
+    let apiKey
+    {console.log(apiKey)}
+    if (API_KEY == null) {
+      apiKey = '&apiKey=' + System.getenv('API_KEY');
+    } else {
+      apiKey = '&apiKey=' + API_KEY;
+    }
     let url = body + parameter + ignorePantry + apiKey;
     this.fetchRecipes(url);
   }
