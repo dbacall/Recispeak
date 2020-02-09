@@ -8,7 +8,6 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import RecipesList from './RecipesList';
-import {SPOONACULAR_API_KEY} from '../utils/RapidApiSpoonacularApiKey';
 
 export default class Ingredients extends Component {
   constructor(props) {
@@ -18,6 +17,7 @@ export default class Ingredients extends Component {
       transcript: [],
       ingredients: [],
       apiKey: '',
+      showRecipes: false,
     };
   }
 
@@ -69,6 +69,13 @@ export default class Ingredients extends Component {
       });
   }
 
+  setShowRecipesState() {
+    this.setState({
+        showRecipes: true
+    })
+    
+  }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -76,7 +83,7 @@ export default class Ingredients extends Component {
           <ActivityIndicator />
         </View>
       );
-    } else {
+    } else if (!this.state.isLoading && !this.state.showRecipes) {
       return (
         <ScrollView>
           {this.state.ingredients.map((ingredient, key) => (
@@ -84,10 +91,14 @@ export default class Ingredients extends Component {
           ))}
           <Button
             title="See Recipes"
-            onPress={() => alert('To be linked to RecipesList')}
+            onPress={ () => this.setShowRecipesState() }
           />
         </ScrollView>
       );
+    } else {
+      return (
+        <RecipesList ingredients={this.state.ingredients} />
+      )
     }
   }
 }
