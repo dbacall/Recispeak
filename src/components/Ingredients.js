@@ -84,7 +84,7 @@ export default class Ingredients extends Component {
           ))}
           <Button
             title="See Recipes"
-            onPress={() => alert('To be linked to RecipesList') }
+            onPress={() => alert('To be linked to RecipesList')}
           />
         </ScrollView>
       );

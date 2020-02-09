@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -9,7 +9,7 @@ import {
   Navigator,
   ActivityIndicator,
 } from 'react-native';
-// import { API_KEY } from '../utils/SpoonacularApiKey';
+import {API_KEY} from '../utils/SpoonacularApiKey';
 
 export default class RecipesList extends Component {
   constructor(props) {
@@ -18,51 +18,58 @@ export default class RecipesList extends Component {
       isLoading: true,
       recipesData: [],
       ingredients: [],
-      ignorePantry: false
+      ignorePantry: false,
     };
   }
   componentDidMount() {
-    let body = 'https://api.spoonacular.com/recipes/findByIngredients?ranking=1&number=2';
+    let body =
+      'https://api.spoonacular.com/recipes/findByIngredients?ranking=1&number=2';
     let parameter = '&ingredients=' + this.state.ingredients.join(',');
     let ignorePantry = '&ignorePantry=' + this.state.ignorePantry.toString();
     let apiKey = '&apiKey=' + API_KEY;
     let url = body + parameter + ignorePantry + apiKey;
-    this.fetchRecipes(url)
+    this.fetchRecipes(url);
   }
   fetchRecipes(url) {
     return fetch(url)
-    .then((response) => response.json())
-    .then((responseJson) => {
-      this.setState({
-        recipesData: responseJson,
-        isLoading: false,
+      .then(response => response.json())
+      .then(responseJson => {
+        this.setState({
+          recipesData: responseJson,
+          isLoading: false,
+        });
       })
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      .catch(err => {
+        console.log(err);
+      });
   }
   render() {
     if (this.state.isLoading) {
       return (
         <View>
-          <ActivityIndicator/>
+          <ActivityIndicator />
         </View>
-      )
+      );
     } else {
-        return (
-          <ScrollView>
-            {this.state.recipesData.map((data, index) =>
-              <View key={index}>
-                <Image source={{uri: data.image}} style={{width: 400, height: 400}} />
+      return (
+        <ScrollView>
+          {this.state.recipesData.map((data, index) => (
+            <View key={index}>
+              <Image
+                source={{uri: data.image}}
+                style={{width: 400, height: 400}}
+              />
+              <Text>
+                <Text> {data.title} </Text>
                 <Text>
-                  <Text> {data.title} </Text>
-                  <Text> {'\n'}Missing ingredients: {data.missedIngredientCount} </Text>
+                  {' '}
+                  {'\n'}Missing ingredients: {data.missedIngredientCount}{' '}
                 </Text>
-                </View>
-            )}
-          </ScrollView>
-        )
+              </Text>
+            </View>
+          ))}
+        </ScrollView>
+      );
     }
   }
 }
