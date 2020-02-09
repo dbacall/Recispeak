@@ -9,7 +9,7 @@ import {
   Navigator,
   ActivityIndicator,
 } from 'react-native';
-import {API_KEY} from '../utils/RapidApiSpoonacularApiKey';
+// import {API_KEY} from '../utils/RapidApiSpoonacularApiKey';
 
 export default class RecipesList extends Component {
   constructor(props) {
