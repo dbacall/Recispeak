@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import RecipesList from './RecipesList';
-import {SPOONACULAR_API_KEY} from '../utils/RapidApiSpoonacularApiKey';
+// import {SPOONACULAR_API_KEY} from '../utils/RapidApiSpoonacularApiKey';
 
 export default class Ingredients extends Component {
   constructor(props) {
