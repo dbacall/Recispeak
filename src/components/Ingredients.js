@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  Text,
-  View,
-  Button,
-  ActivityIndicator,
-} from 'react-native';
+import {ScrollView, Text, View, Button, ActivityIndicator} from 'react-native';
 import RecipesList from './RecipesList';
 
 export default class Ingredients extends Component {
