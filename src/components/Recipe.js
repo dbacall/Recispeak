@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {SPOONACULAR_API_KEY} from '../utils/RapidApiSpoonacularApiKey';
 import {ScrollView, Text, View, Image, ActivityIndicator} from 'react-native';
 
 export default class Recipe extends Component {
@@ -8,15 +9,15 @@ export default class Recipe extends Component {
       isLoading: true,
       recipeData: [],
       instructionsData: [],
-      id: 324694,
+      id: 0,
     };
   }
 
   componentDidMount() {
     let body = 'https://api.spoonacular.com/recipes/';
-    let id = this.state.id;
+    let id = this.props.individualRecipeID;
     let end = '/information?includeNutrition=true&';
-    let apiKey = 'apiKey=' + API_KEY;
+    let apiKey = 'apiKey=' + SPOONACULAR_API_KEY;
     let url = body + id + end + apiKey;
     this.fetchRecipe(url);
   }
@@ -40,13 +41,6 @@ export default class Recipe extends Component {
     let ingredientsList = this.state.recipeData.extendedIngredients;
     let instructions = this.state.recipeData.analyzedInstructions;
 
-    if (this.state.isLoading) {
-      return (
-        <View>
-          <ActivityIndicator />
-        </View>
-      );
-    } else {
       return (
         <ScrollView>
           <View>
@@ -99,6 +93,5 @@ export default class Recipe extends Component {
           </View>
         </ScrollView>
       );
-    }
   }
 }
