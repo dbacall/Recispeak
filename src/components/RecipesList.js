@@ -8,16 +8,9 @@ export default class RecipesList extends Component {
   }
 
   render() {
-    if (!this.props.recipesData.length) {
-      return (
-        <View>
-          <ActivityIndicator />
-        </View>
-      );
-    } else {
       return (
         <ScrollView>
-          {this.props.recipesData.map((data, index) => (
+        {this.props.recipesData.map((data, index) => (
             <View key={index}>
               <Image
                 source={{uri: data.image}}
@@ -32,12 +25,7 @@ export default class RecipesList extends Component {
               </Text>
             </View>
           ))}
-          <Button
-            title="Go Back"
-            onPress={ () => this.props.goToPage("ingredients") }
-          />
         </ScrollView>
       );
     }
-  }
 }
