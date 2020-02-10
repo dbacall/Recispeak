@@ -5,7 +5,7 @@ import VoiceNative from './components/Voice';
 import Recipe from './components/Recipe'
 import Ingredients from './components/Ingredients'
 import Voice from 'react-native-voice';
-import {API_KEY, SPOONACULAR_API_KEY} from './utils/RapidApiSpoonacularApiKey';
+import {RAPID_API_KEY, SPOONACULAR_API_KEY} from './utils/RapidApiSpoonacularApiKey';
 
 export default class Speakipe extends Component {
   constructor(props) {
@@ -27,10 +27,10 @@ export default class Speakipe extends Component {
     body,
     url = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/detect',
   ) {
-    if (API_KEY == null) {
-      this.state.apiKey = System.getenv('API_KEY');
+    if (RAPID_API_KEY == null) {
+      this.state.apiKey = System.getenv('RAPID_API_KEY');
     } else {
-      this.state.apiKey = API_KEY;
+      this.state.apiKey = RAPID_API_KEY;
     }
     fetch(url, {
       method: 'POST',
@@ -120,6 +120,7 @@ export default class Speakipe extends Component {
         goToPage={(page) => this.setState({view: page})} />
       case "ingredients":
         return <Ingredients
+        deleteIngredient={(ingredient) => this.setState({ingredients: this.state.ingredients.filter(e => e !== ingredient)})}
         ingredients={this.state.ingredients}
         goToRecipes={() => this.getRecipes()} />
       case "recipes_list":

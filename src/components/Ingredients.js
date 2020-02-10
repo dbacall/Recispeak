@@ -11,7 +11,11 @@ export default class Ingredients extends Component {
       return (
         <ScrollView>
           {this.props.ingredients.map((ingredient, key) => (
-            <Text key={key}> {ingredient} </Text>
+            <Button
+            title={ingredient}
+            key={key}
+            onPress={ () => this.props.deleteIngredient(ingredient) }
+          />
           ))}
           <Button
             title="See Recipes"
