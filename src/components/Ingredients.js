@@ -15,7 +15,7 @@ export default class Ingredients extends Component {
           ))}
           <Button
             title="See Recipes"
-            onPress={ () => this.props.goToPage("recipes_list") }
+            onPress={ () => this.props.goToRecipes() }
           />
         </ScrollView>
       );
