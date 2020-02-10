@@ -5,44 +5,10 @@ import {ScrollView, Text, View, Image, ActivityIndicator} from 'react-native';
 export default class RecipesList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoading: true,
-      recipesData: [],
-      ingredients: this.props.ingredients,
-      ignorePantry: false,
-    };
   }
-  componentDidMount() {
-    
-    let body =
-      'https://api.spoonacular.com/recipes/findByIngredients?ranking=1&number=2';
-    let parameter = '&ingredients=' + this.state.ingredients.join(',');
-    let ignorePantry = '&ignorePantry=' + this.state.ignorePantry.toString();
-    let apiKey
-    {console.log(apiKey)}
-    if (API_KEY == null) {
-      apiKey = '&apiKey=' + System.getenv('API_KEY');
-    } else {
-      apiKey = '&apiKey=' + API_KEY;
-    }
-    let url = body + parameter + ignorePantry + apiKey;
-    this.fetchRecipes(url);
-  }
-  fetchRecipes(url) {
-    return fetch(url)
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setState({
-          recipesData: responseJson,
-          isLoading: false,
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+
   render() {
-    if (this.state.isLoading) {
+    if (!this.props.recipesData.length) {
       return (
         <View>
           <ActivityIndicator />
@@ -51,7 +17,7 @@ export default class RecipesList extends Component {
     } else {
       return (
         <ScrollView>
-          {this.state.recipesData.map((data, index) => (
+          {this.props.recipesData.map((data, index) => (
             <View key={index}>
               <Image
                 source={{uri: data.image}}
@@ -66,6 +32,10 @@ export default class RecipesList extends Component {
               </Text>
             </View>
           ))}
+          <Button
+            title="Go Back"
+            onPress={ () => this.props.goToPage("ingredients") }
+          />
         </ScrollView>
       );
     }
