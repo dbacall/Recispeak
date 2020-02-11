@@ -17,7 +17,7 @@ export default class RecipesList extends Component {
       <ScrollView>
         {this.props.recipesData.map((data, index) => (
           <TouchableOpacity
-            onPress={() => this.props.setIndividualRecipeID(data.id)}>
+            onPress={() => this.props.goToIndividualRecipe(data.id)}>
             <Image
               source={{uri: data.image}}
               style={{width: 400, height: 400}}

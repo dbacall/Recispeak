@@ -18,13 +18,16 @@ export default class Speakipe extends Component {
       transcript: [],
       ingredients: [],
       recipesData: [],
-      individualRecipeID: 27,
+      individualRecipeData: [],
     };
   }
+
   deleteWordDuplicates(transcript) {
     let wordsArray = transcript.join(' ').split(' ');
     return wordsArray.filter((a, b) => wordsArray.indexOf(a) === b);
   }
+
+  // Food detection API
   fetchIngredients(
     body,
     url = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/detect',
@@ -34,6 +37,7 @@ export default class Speakipe extends Component {
     } else {
       this.state.apiKey = RAPID_API_KEY;
     }
+
     fetch(url, {
       method: 'POST',
       headers: {
@@ -58,6 +62,7 @@ export default class Speakipe extends Component {
         console.log(err);
       });
   }
+
   componentDidUpdate(prevProps, prevState) {
     if (
       this.state.transcript !== prevState.transcript &&
@@ -76,40 +81,55 @@ export default class Speakipe extends Component {
       });
     }
   }
+
+  // URL for Recipes List
   makeURL(pantry = false) {
     let body =
       'https://api.spoonacular.com/recipes/findByIngredients?ranking=1&number=2';
     let parameter = '&ingredients=' + this.state.ingredients.join(',');
     let ignorePantry = '&ignorePantry=' + pantry.toString();
+
     let apiKey;
     if (SPOONACULAR_API_KEY == null) {
       apiKey = '&apiKey=' + System.getenv('SPOONACULAR_API_KEY');
     } else {
       apiKey = '&apiKey=' + SPOONACULAR_API_KEY;
     }
+
     return body + parameter + ignorePantry + apiKey;
   }
-  fetchRecipes() {
-    const url = this.makeURL();
-    return fetch(url).then(response => response.json());
-    // return fetch(url)
-    //   .then(response => response.json())
-    //   .then(responseJson => {
-    //     this.setState({
-    //       recipesData: responseJson,
-    //       isLoading: false,
-    //     });
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-  }
+
+  // Recipes List API
   getRecipes() {
-    this.fetchRecipes()
+    const url = this.makeURL();
+    return fetch(url)
+      .then(response => response.json())
       .then(recipes_list => {
         this.setState({
           recipesData: recipes_list,
           view: 'recipes_list',
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  // Individual Recipe API
+  getIndividualRecipe(id) {
+    console.log(this.state.individualRecipeID);
+    let body = 'https://api.spoonacular.com/recipes/';
+    let end = '/information?includeNutrition=true&';
+    let apiKey = 'apiKey=' + SPOONACULAR_API_KEY;
+    let url = body + id + end + apiKey;
+
+    return fetch(url)
+      .then(response => response.json())
+      .then(responseJson => {
+        console.log(responseJson);
+        this.setState({
+          individualRecipeData: responseJson,
+          view: 'recipe',
         });
       })
       .catch(err => {
@@ -145,14 +165,15 @@ export default class Speakipe extends Component {
         return (
           <RecipesList
             recipesData={this.state.recipesData}
-            setIndividualRecipeID={id =>
-              this.setState({individualRecipeID: id})
-            }
-            goToPage={page => this.setState({view: page})}
+            goToIndividualRecipe={(id) => this.getIndividualRecipe(id)}
           />
         );
       case 'recipe':
-        return <Recipe individualRecipeID={this.state.individualRecipeID} />;
+        return (
+          <Recipe
+            individualRecipeData={this.state.individualRecipeData}
+          />
+        );
       default:
         return (
           <View>
@@ -161,6 +182,7 @@ export default class Speakipe extends Component {
         );
     }
   }
+
   render() {
     {
       console.log(this.state);
