@@ -9,7 +9,7 @@ import {
   StyleSheet,
   TextInput,
 } from 'react-native';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+// import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {inlineStyles} from 'react-native-svg';
 

@@ -72,7 +72,6 @@ export default class Speakipe extends Component {
         ' ',
       );
       let body = 'text=' + parameter;
-      console.log(body);
       this.fetchIngredients(body);
     }
     if (this.state.individualRecipeID !== prevState.individualRecipeID) {
@@ -184,9 +183,6 @@ export default class Speakipe extends Component {
   }
 
   render() {
-    {
-      console.log(this.state);
-    }
     return this.renderView();
   }
 }
