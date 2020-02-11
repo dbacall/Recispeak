@@ -9,8 +9,6 @@ import {
   StyleSheet,
   TextInput,
 } from 'react-native';
-// import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {inlineStyles} from 'react-native-svg';
 
 export default class Ingredients extends Component {
@@ -32,10 +30,10 @@ export default class Ingredients extends Component {
         {this.props.ingredients.map((ingredient, key) => (
           <View style={styles.containerMain}>
             <Text style={styles.button}> {ingredient} </Text>
-            <FontAwesomeIcon
+            <Button
+              title="D"
               style={styles.deleteButton}
               activeOpacity={0.6}
-              icon={faTrashAlt}
               onPress={() => this.props.deleteIngredient(ingredient)}
             />
           </View>
