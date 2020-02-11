@@ -5,41 +5,12 @@ import {ScrollView, Text, View, Image, ActivityIndicator} from 'react-native';
 export default class Recipe extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoading: true,
-      recipeData: [],
-      instructionsData: [],
-      id: 0,
-    };
-  }
-
-  componentDidMount() {
-    let body = 'https://api.spoonacular.com/recipes/';
-    let id = this.props.individualRecipeID;
-    let end = '/information?includeNutrition=true&';
-    let apiKey = 'apiKey=' + SPOONACULAR_API_KEY;
-    let url = body + id + end + apiKey;
-    this.fetchRecipe(url);
-  }
-
-  fetchRecipe(url) {
-    return fetch(url)
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setState({
-          recipeData: responseJson,
-          isLoading: false,
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
   }
 
   render() {
-    let recipe = this.state.recipeData;
-    let ingredientsList = this.state.recipeData.extendedIngredients;
-    let instructions = this.state.recipeData.analyzedInstructions;
+    let recipe = this.props.individualRecipeData;
+    let ingredientsList = this.props.individualRecipeData.extendedIngredients;
+    let instructions = this.props.individualRecipeData.analyzedInstructions;
 
     return (
       <ScrollView>
