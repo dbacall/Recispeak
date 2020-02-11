@@ -46,5 +46,10 @@
     "testEnvironmentOptions": {
       "enzymeAdapter": "react16"
     }
+  },
+  "rnpm": {
+    "assets": [
+	"./assets/fonts/"
+    ]
   }
 }
