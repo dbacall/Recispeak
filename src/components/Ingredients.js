@@ -33,8 +33,9 @@ export default class Ingredients extends Component {
             title="See Recipes"
             onPress={ () => this.props.goToRecipes() }
           />
-        </ScrollView>
-      );
+        ))}
+      </ScrollView>
+    );
   }
 }
 

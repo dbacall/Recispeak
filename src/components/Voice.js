@@ -7,7 +7,7 @@ export default class VoiceNative extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      started: ''
+      started: '',
     };
     Voice.onSpeechStart = this.onSpeechStart.bind(this);
     Voice.onSpeechResults = this.onSpeechResults.bind(this);
@@ -24,14 +24,14 @@ export default class VoiceNative extends React.Component {
   }
 
   onSpeechResults(e) {
-    this.props.setTranscript(e.value)
-    this.props.goToPage("ingredients")
+    this.props.setTranscript(e.value);
+    this.props.goToPage('ingredients');
   }
 
   async _startRecognition() {
-    this.props.setTranscript([])
+    this.props.setTranscript([]);
     this.setState({
-      started: ''
+      started: '',
     });
     try {
       await Voice.start('en-US');
@@ -50,7 +50,7 @@ export default class VoiceNative extends React.Component {
         />
         <Text>Press start to begin recording</Text>
       </View>
-    )
+    );
   }
 }
 
