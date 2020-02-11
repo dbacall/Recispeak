@@ -44,6 +44,7 @@ export default class VoiceNative extends React.Component {
     return (
       <View>
         <Button
+          id="start-recording"
           style={styles.transcript}
           onPress={this._startRecognition.bind(this)}
           title="Start"

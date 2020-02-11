@@ -58,6 +58,7 @@ export default class Speakipe extends Component {
         console.log(err);
       });
   }
+
   componentDidUpdate(prevProps, prevState) {
     if (
       this.state.transcript !== prevState.transcript &&
@@ -67,7 +68,6 @@ export default class Speakipe extends Component {
         ' ',
       );
       let body = 'text=' + parameter;
-      console.log(body);
       this.fetchIngredients(body);
     }
     if (this.state.individualRecipeID !== prevState.individualRecipeID) {
@@ -162,9 +162,6 @@ export default class Speakipe extends Component {
     }
   }
   render() {
-    {
-      console.log(this.state);
-    }
     return this.renderView();
   }
 }
