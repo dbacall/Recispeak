@@ -1,8 +1,17 @@
 import React, {Component} from 'react';
-import {ScrollView, Text, Alert, View, TouchableOpacity, Button, StyleSheet, Animated} from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import { inlineStyles } from 'react-native-svg';
+import {
+  ScrollView,
+  Text,
+  Alert,
+  View,
+  TouchableOpacity,
+  Button,
+  StyleSheet,
+  Animated,
+} from 'react-native';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {inlineStyles} from 'react-native-svg';
 
 export default class Ingredients extends Component {
   constructor(props) {
@@ -10,30 +19,20 @@ export default class Ingredients extends Component {
   }
 
   render() {
-      return (
-        <ScrollView>
-          {this.props.ingredients.map((ingredient, key) => (
-            <View style={styles.containerMain}>
-              <TouchableOpacity
-              style={styles.button}
-              title={ingredient}
-              activeOpacity={1}
-              key={key}
-              >
-              <Text style={styles.TextStyle}> {ingredient} </Text>  
-              </TouchableOpacity><FontAwesomeIcon 
-                style={styles.deleteButton}
-                activeOpacity={0.6}
-                icon={ faTrashAlt } 
-                onPress={() => this.props.deleteIngredient(ingredient)}
-              />
-            </View>
-          ))}
-          <Button
-            title="See Recipes"
-            onPress={ () => this.props.goToRecipes() }
-          />
+    return (
+      <ScrollView>
+        {this.props.ingredients.map((ingredient, key) => (
+          <View style={styles.containerMain}>
+            <Text style={styles.button}> {ingredient} </Text>
+            <FontAwesomeIcon
+              style={styles.deleteButton}
+              activeOpacity={0.6}
+              icon={faTrashAlt}
+              onPress={() => this.props.deleteIngredient(ingredient)}
+            />
+          </View>
         ))}
+        <Button title="See Recipes" onPress={() => this.props.goToRecipes()} />
       </ScrollView>
     );
   }
@@ -47,14 +46,14 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
   },
- 
+
   button: {
     width: '70%',
     height: 40,
     justifyContent: 'center',
     backgroundColor: '#EE5407',
   },
-  
+
   deleteButton: {
     fontSize: 10,
     // display: 'flex',

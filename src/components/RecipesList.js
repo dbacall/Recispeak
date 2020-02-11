@@ -7,7 +7,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
-// import {API_KEY} from '../utils/RapidApiSpoonacularApiKey';
+
 export default class RecipesList extends Component {
   constructor(props) {
     super(props);

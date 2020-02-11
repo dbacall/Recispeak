@@ -41,57 +41,57 @@ export default class Recipe extends Component {
     let ingredientsList = this.state.recipeData.extendedIngredients;
     let instructions = this.state.recipeData.analyzedInstructions;
 
-      return (
-        <ScrollView>
-          <View>
-            <Image
-              source={{uri: recipe.image}}
-              style={{width: 400, height: 400}}
-            />
+    return (
+      <ScrollView>
+        <View>
+          <Image
+            source={{uri: recipe.image}}
+            style={{width: 400, height: 400}}
+          />
+          <Text>
+            <Text>{recipe.title} </Text>
             <Text>
-              <Text>{recipe.title} </Text>
+              {' '}
+              {'\n'}
+              {recipe.readyInMinutes} minutes
+            </Text>
+            <Text>
+              {' '}
+              {'\n'}
+              {recipe.servings} servings
+            </Text>
+            {ingredientsList.map((j, k) => (
               <Text>
                 {' '}
                 {'\n'}
-                {recipe.readyInMinutes} minutes
+                {ingredientsList[k].original}{' '}
               </Text>
-              <Text>
-                {' '}
-                {'\n'}
-                {recipe.servings} servings
-              </Text>
-              {ingredientsList.map((j, k) => (
+            ))}
+          </Text>
+        </View>
+
+        <View>
+          {instructions.map((item, key) => (
+            <Text>
+              {instructions[key].name.length > 0 && (
+                <Text>{instructions[key].name}</Text>
+              )}
+              {instructions[key].steps.map((i, k) => (
                 <Text>
-                  {' '}
-                  {'\n'}
-                  {ingredientsList[k].original}{' '}
+                  <Text>
+                    {'\n'}
+                    {instructions[key].steps[k].number}
+                  </Text>
+                  <Text>
+                    {'\n'}
+                    {instructions[key].steps[k].step}
+                  </Text>
                 </Text>
               ))}
             </Text>
-          </View>
-
-          <View>
-            {instructions.map((item, key) => (
-              <Text>
-                {instructions[key].name.length > 0 && (
-                  <Text>{instructions[key].name}</Text>
-                )}
-                {instructions[key].steps.map((i, k) => (
-                  <Text>
-                    <Text>
-                      {'\n'}
-                      {instructions[key].steps[k].number}
-                    </Text>
-                    <Text>
-                      {'\n'}
-                      {instructions[key].steps[k].step}
-                    </Text>
-                  </Text>
-                ))}
-              </Text>
-            ))}
-          </View>
-        </ScrollView>
-      );
+          ))}
+        </View>
+      </ScrollView>
+    );
   }
 }

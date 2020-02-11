@@ -59,7 +59,10 @@ export default class Speakipe extends Component {
       });
   }
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.transcript !== prevState.transcript && this.state.transcript?.length) {
+    if (
+      this.state.transcript !== prevState.transcript &&
+      this.state.transcript?.length
+    ) {
       let parameter = this.deleteWordDuplicates(this.state.transcript).join(
         ' ',
       );
@@ -113,6 +116,7 @@ export default class Speakipe extends Component {
         console.log(err);
       });
   }
+
   renderView() {
     switch (this.state.view) {
       case 'record':
@@ -126,6 +130,13 @@ export default class Speakipe extends Component {
       case 'ingredients':
         return (
           <Ingredients
+            deleteIngredient={ingredient =>
+              this.setState({
+                ingredients: this.state.ingredients.filter(
+                  e => e !== ingredient,
+                ),
+              })
+            }
             ingredients={this.state.ingredients}
             goToRecipes={() => this.getRecipes()}
           />
