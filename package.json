@@ -16,7 +16,9 @@
     "@fortawesome/react-native-fontawesome": "^0.2.1",
     "react": "16.9.0",
     "react-native": "0.61.5",
+    "react-native-elements": "^1.2.7",
     "react-native-svg": "^11.0.1",
+    "react-native-vector-icons": "^6.6.0",
     "react-native-voice": "^0.3.0"
   },
   "devDependencies": {
