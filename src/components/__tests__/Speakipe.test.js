@@ -17,12 +17,6 @@ describe('Speakipe should work as expected', () => {
     component = wrapper.instance();
   });
 
-  test('should delete word duplicates', () => {
-    expect(component.deleteWordDuplicates(['hello', 'hello'])).toEqual([
-      'hello',
-    ]);
-  });
-
   test('should render voice component when app is opened', () => {
     expect(wrapper.find("VoiceNative")).toHaveLength(1)
   });
@@ -40,6 +34,27 @@ describe('Speakipe should work as expected', () => {
   test('should render individual recipe component when view changed to recipe', () => {
     component.setState({view: "recipe"})
     expect(wrapper.find("Recipe")).toHaveLength(1)
+  });
+
+  test('should render individual recipe component when view changed to recipe', () => {
+    component.setState({view: "recipe"})
+    expect(wrapper.find("Recipe")).toHaveLength(1)
+  });
+
+  test('should delete word duplicates', () => {
+    expect(component.deleteWordDuplicates(['hello', 'hello'])).toEqual([
+      'hello',
+    ]);
+  });
+
+  test('pressing start recording button calls _startRecognition', () => {
+    const spy = jest.spyOn(component, 'fetchIngredients').mockImplementation(() => Promise.resolve());
+
+    component.forceUpdate();
+    component.setState({transcript: ['Original']})
+    component.setState({transcript: ['Changed']})
+
+    expect(spy).toHaveBeenCalled();
   });
 
   // test('voice page should render correctly', () => {

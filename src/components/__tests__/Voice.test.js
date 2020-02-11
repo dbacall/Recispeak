@@ -18,12 +18,11 @@ describe('Voice component should work as expected', () => {
   });
 
   test('pressing start recording button calls _startRecognition', () => {
-    const spy = jest.spyOn(component, '_startRecognition');
-
+    const spy = jest.spyOn(component, '_startRecognition')
     component.forceUpdate();
     wrapper.find(Button).first().props().onPress()
 
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalled();
   });
 
   // test('voice page should render correctly', () => {
