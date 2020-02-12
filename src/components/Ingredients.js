@@ -26,6 +26,7 @@ export default class Ingredients extends Component {
   }
 
   render() {
+    console.log(this.props)
     if (this.props.ingredients.length !== 0 && this.props.ingredientsLoaded) {
       return (
         <ScrollView>
