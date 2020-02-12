@@ -15,7 +15,10 @@ import {inlineStyles} from 'react-native-svg';
 export default class Ingredients extends Component {
   constructor(props) {
     super(props);
-    this.state = { newIngredient: '' }
+    this.state = {
+      newIngredient: '',
+      ingredientsLoaded: this.props.ingredientsLoaded
+     }
   }
 
   addIngredient(newIngredient, textInput=this.textInput) {
@@ -27,8 +30,7 @@ export default class Ingredients extends Component {
   }
 
   render() {
-    console.log(this.props)
-    if (this.props.ingredients.length !== 0 && this.props.ingredientsLoaded) {
+    if (this.props.ingredients.length !== 0 && this.state.ingredientsLoaded) {
       return (
         <ScrollView>
           {this.props.ingredients.map((ingredient, key) => (
@@ -56,10 +58,10 @@ export default class Ingredients extends Component {
     } else if (this.props.ingredients.length === 0 && this.props.ingredientsLoaded) {
       return (
         <ScrollView>
-              <Text> No ingredients detected! </Text>             
+          <Text> No ingredients detected! </Text>
           <Button title="Try again" onPress={() => this.props.goToPage('record')} />
         </ScrollView>
-      ) 
+      )
     } else {
       return (
         <View>
