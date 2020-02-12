@@ -5,10 +5,10 @@ import VoiceNative from './components/Voice';
 import Recipe from './components/Recipe';
 import Ingredients from './components/Ingredients';
 import Voice from 'react-native-voice';
-import {
-  RAPID_API_KEY,
-  SPOONACULAR_API_KEY,
-} from './utils/RapidApiSpoonacularApiKey';
+// import {
+//   RAPID_API_KEY,
+//   SPOONACULAR_API_KEY,
+// } from './utils/RapidApiSpoonacularApiKey';
 
 export default class Speakipe extends Component {
   constructor(props) {
