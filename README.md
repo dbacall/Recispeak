@@ -7,7 +7,7 @@
 ## Quick start
 
 - To install dependencies, run ```npm install``` in the terminal
-- To run the tests and see code coverage, run ```npm test -- --coverage --watchAll=false``` in the terminal
+- To run the tests and see code coverage, run ```npm test -- --coverage``` in the terminal
 - To run the linter (ESLint), run ```npm run lint``` in the terminal
 - EditorConfig was used to increase the code quality
 - CodeClimate is attached to our repository to check code quality and maintainability
