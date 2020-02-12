@@ -92,3 +92,4 @@ I want to see a page that tells me what to do next in this situation
 ## Running the linter
 
 - To run the linter (ESLint), run ```npm run lint``` in the terminal
+
