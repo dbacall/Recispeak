@@ -15,7 +15,7 @@ export default class Recipe extends Component {
       <View
 				style={styles.viewView}>
 				<ScrollView
-					contentContainerStyle={styles.viewScrollView} >
+					contentContainerStyle={styles.viewScrollView}>
 					<View
 						pointerEvents="box-none"
 						style={{
@@ -38,7 +38,7 @@ export default class Recipe extends Component {
 								style={styles.recipeTitle}>{recipe.title}</Text>
 						</View>
 						<TouchableOpacity
-							onPress={this.onGroup6Pressed}
+							onPress={() => this.props.goToPage('ingredients')}
 							style={styles.group6Button}>
 							<Image
 								source={require("./../../assets/images/group-6.png")}
@@ -98,7 +98,9 @@ export default class Recipe extends Component {
             {instructions.map((item, key) => (
 						<Text style={styles.stepText}>
               {instructions[key].name.length > 0 && (
-                <Text>{instructions[key].name}</Text>
+                <Text style={styles.stepSubHeadingText}>
+                  {instructions[key].name}{"\n"}{"\n"}
+                </Text>
               )}
               {instructions[key].steps.map((i, k) => (
               <Text>{instructions[key].steps[k].number}.  {instructions[key].steps[k].step}{"\n"}{"\n"}</Text>
@@ -153,13 +155,6 @@ const styles = StyleSheet.create({
 		width: 33,
 		top: 10,
 		height: 32,
-	},
-	group6ButtonText: {
-		color: "black",
-		fontSize: 12,
-		fontStyle: "normal",
-		fontWeight: "normal",
-		textAlign: "left",
 	},
 	viewTwoView: {
 		backgroundColor: "transparent",
@@ -249,9 +244,12 @@ const styles = StyleSheet.create({
 		backgroundColor: "transparent",
 		alignSelf: "center",
 		width: 289,
-		height: 33,
+		height: 35,
 		marginTop: 26,
 	},
+  stepSubHeadingText: {
+    fontWeight: 'bold'
+  },
 	ingredientsText: {
 		backgroundColor: "transparent",
 		color: "black",
@@ -271,7 +269,7 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		alignSelf: "center",
 		width: 289,
-		top: 30,
+		top: 35,
 		height: 3,
 	},
 	ingredientText: {
@@ -281,21 +279,19 @@ const styles = StyleSheet.create({
 		fontStyle: "normal",
 		fontWeight: "normal",
 		textAlign: "left",
-		lineHeight: 20,
+		lineHeight: 23,
 		paddingTop: 7,
 		backgroundColor: "transparent",
 		width: 281,
-		// height: 29,
 		marginRight: 35,
 		marginTop: 3,
 	},
 	viewFiveView: {
 		backgroundColor: "transparent",
-		// position: "absolute",
 		alignSelf: "center",
 		width: 289,
-		top: 0,
-		height: 33,
+		top: -20,
+		height: 35,
 	},
 	methodText: {
 		backgroundColor: "transparent",
@@ -316,7 +312,7 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		alignSelf: "center",
 		width: 289,
-		top: 30,
+		top: 35,
 		height: 3,
 	},
 	stepText: {
@@ -329,10 +325,8 @@ const styles = StyleSheet.create({
 		textAlign: "left",
 		lineHeight: 20,
 		paddingTop: 7,
-		// position: "absolute",
 		right: 2,
 		width: 281,
-		bottom: 0,
-		// height: 68,
+		bottom: 12,
 	},
 })
