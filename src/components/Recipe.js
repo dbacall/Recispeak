@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {SPOONACULAR_API_KEY} from '../utils/RapidApiSpoonacularApiKey';
-import {ScrollView, Text, View, Image, ActivityIndicator} from 'react-native';
+import {ScrollView, Text, View, Image, Button} from 'react-native';
 
 export default class Recipe extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ export default class Recipe extends Component {
     return (
       <ScrollView>
         <View>
+          <Button title="Back" onPress={() => this.props.goToPage('recipes_list')} />
           <Image
             source={{uri: recipe.image}}
             style={{width: 400, height: 400}}

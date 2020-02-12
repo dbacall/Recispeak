@@ -81,7 +81,7 @@ export default class Speakipe extends Component {
         view: 'recipe',
       });
     }
-    if (this.state.view !== prevState.view) {
+    if (this.state.view !== prevState.view && this.state.view === 'record') {
       this.setState({
         ingredientsLoaded: false,
       });
@@ -152,7 +152,6 @@ export default class Speakipe extends Component {
             results={this.state.transcript}
             setTranscript={results => this.setState({transcript: results})}
             goToPage={page => this.setState({view: page})}
-            // setLoadingToFalse={ this.setState({ingredientsLoaded: false})}
           />
         );
       case 'ingredients':
@@ -175,12 +174,14 @@ export default class Speakipe extends Component {
         return (
           <RecipesList
             recipesData={this.state.recipesData}
+            goToPage={page => this.setState({view: page})}
             goToIndividualRecipe={(id) => this.getIndividualRecipe(id)}
           />
         );
       case 'recipe':
         return (
           <Recipe
+            goToPage={page => this.setState({view: page})}
             individualRecipeData={this.state.individualRecipeData}
           />
         );

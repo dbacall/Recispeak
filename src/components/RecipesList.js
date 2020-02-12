@@ -6,6 +6,7 @@ import {
   Image,
   ActivityIndicator,
   TouchableOpacity,
+  Button,
 } from 'react-native';
 
 export default class RecipesList extends Component {
@@ -15,6 +16,7 @@ export default class RecipesList extends Component {
   render() {
     return (
       <ScrollView>
+        <Button title="Back" onPress={() => this.props.goToPage('ingredients')} />
         {this.props.recipesData.map((data, index) => (
           <TouchableOpacity
             onPress={() => this.props.goToIndividualRecipe(data.id)}>
