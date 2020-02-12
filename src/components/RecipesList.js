@@ -36,7 +36,6 @@ export default class RecipesList extends Component {
           }]}
           onChangeText={ (value) => { this.setState({missingIngredientsAmount: value })}}
         />
-        {console.log(this.state.missingIngredientsAmount)}
         {this.props.recipesData.map((data, index) => (
           this.state.missingIngredientsAmount === '5+' ?
             <TouchableOpacity
