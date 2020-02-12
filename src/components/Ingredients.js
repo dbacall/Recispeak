@@ -35,9 +35,13 @@ export default class Ingredients extends Component {
         <Image
           source={require("./../../assets/images/8fc08fd48cd8eda6dfca9ef25047c865.png")}
           style={styles.backgroundImage}/>
-        <Image
-          source={require("./../../assets/images/ellipse-1.png")}
-          style={styles.goBackImage}/>
+          <TouchableOpacity
+  						onPress={() => this.props.goToPage("record")}
+  						style={styles.goBackButton}>
+  						<Image
+  							source={require("./../../assets/images/ellipse-1.png")}
+  							style={styles.goBackButtonImage}/>
+  				</TouchableOpacity>
       </View>
       <Text
         style={styles.titleText}>Ingredients</Text>
@@ -313,5 +317,20 @@ const styles = StyleSheet.create({
 	seeRecipesButtonImage: {
 		resizeMode: "contain",
 		marginRight: 10,
+	},
+  goBackButtonImage: {
+		resizeMode: "contain",
+	},
+	goBackButton: {
+		backgroundColor: "transparent",
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "center",
+		padding: 0,
+		position: "absolute",
+		left: 14,
+		width: 33,
+		top: 119,
+		height: 32,
 	},
 })

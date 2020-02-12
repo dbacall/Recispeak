@@ -76,12 +76,13 @@ export default class RecipesList extends Component {
             }}>
             <View
               style={styles.rectangle20View}/>
-            <View
-              style={styles.group9View}>
-              <Image
-                source={require("./../../assets/images/group-6.png")}
-                style={styles.group6Image}/>
-            </View>
+              <TouchableOpacity
+  							onPress={() => this.props.goToPage("ingredients")}
+  							style={styles.group9Button}>
+  							<Image
+  								source={require("./../../assets/images/group-6.png")}
+  								style={styles.group9ButtonImage}/>
+  						</TouchableOpacity>
           </View>
           <View>
             {element}
@@ -112,21 +113,21 @@ const styles = StyleSheet.create({
     top: 0,
     height: 55,
   },
-  group9View: {
-    backgroundColor: "transparent",
-    position: "absolute",
-    left: 17,
-    width: 33,
-    top: 12,
-    height: 32,
-    justifyContent: "center",
-  },
-  group6Image: {
-    resizeMode: "center",
-    backgroundColor: "transparent",
-    width: null,
-    height: 32,
-  },
+  group9Button: {
+		backgroundColor: "transparent",
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "center",
+		padding: 0,
+		position: "absolute",
+		left: 17,
+		width: 33,
+		top: 12,
+		height: 32,
+	},
+	group9ButtonImage: {
+		resizeMode: "contain",
+	},
   viewTwoView: {
 		backgroundColor: "transparent",
 		position: "absolute",

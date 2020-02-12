@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {SPOONACULAR_API_KEY} from '../utils/RapidApiSpoonacularApiKey';
-import {StyleSheet, ScrollView, TouchableOpacity, Text, View, Image, ActivityIndicator} from 'react-native';
+import {StyleSheet, Button, ScrollView, TouchableOpacity, Text, View, Image, ActivityIndicator} from 'react-native';
 export default class Recipe extends Component {
   constructor(props) {
     super(props);
@@ -37,8 +37,8 @@ export default class Recipe extends Component {
 							<Text
 								style={styles.recipeTitle}>{recipe.title}</Text>
 						</View>
-						<TouchableOpacity
-							onPress={() => this.props.goToPage('ingredients')}
+            <TouchableOpacity
+							onPress={() => this.props.goToPage('recipes_list')}
 							style={styles.group6Button}>
 							<Image
 								source={require("./../../assets/images/group-6.png")}
@@ -75,7 +75,7 @@ export default class Recipe extends Component {
 					</View>
 					<Text style={styles.ingredientText}>
           {ingredientsList.map((j, k) => (
-            <Text>{ingredientsList[k].original}{"\n"}</Text>
+            <Text key={k}>{ingredientsList[k].original}{"\n"}</Text>
           ))}
           </Text>
 					<View
@@ -96,7 +96,7 @@ export default class Recipe extends Component {
 								style={styles.path13Image}/>
 						</View>
             {instructions.map((item, key) => (
-						<Text style={styles.stepText}>
+						<Text key={key} style={styles.stepText}>
               {instructions[key].name.length > 0 && (
                 <Text style={styles.stepSubHeadingText}>
                   {instructions[key].name}{"\n"}{"\n"}
@@ -140,21 +140,6 @@ const styles = StyleSheet.create({
 		alignSelf: "center",
 		width: 311,
 		marginTop: 16,
-	},
-	group6ButtonImage: {
-		resizeMode: "contain",
-	},
-	group6Button: {
-		backgroundColor: "transparent",
-		flexDirection: "row",
-		alignItems: "center",
-		justifyContent: "center",
-		padding: 0,
-		position: "absolute",
-		left: 13,
-		width: 33,
-		top: 10,
-		height: 32,
 	},
 	viewTwoView: {
 		backgroundColor: "transparent",
@@ -328,5 +313,20 @@ const styles = StyleSheet.create({
 		right: 2,
 		width: 281,
 		bottom: 12,
+	},
+  group6Button: {
+		backgroundColor: "transparent",
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "center",
+		padding: 0,
+		position: "absolute",
+		left: 13,
+		width: 33,
+		top: 10,
+		height: 32,
+	},
+	group6ButtonImage: {
+		resizeMode: "contain",
 	},
 })

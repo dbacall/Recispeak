@@ -158,11 +158,13 @@ export default class Speakipe extends Component {
             }
             ingredients={this.state.ingredients}
             goToRecipes={() => this.getRecipes()}
+            goToPage={page => this.setState({view: page})}
           />
         );
       case 'recipes_list':
         return (
           <RecipesList
+            goToPage={page => this.setState({view: page})}
             recipesData={this.state.recipesData}
             goToIndividualRecipe={(id) => this.getIndividualRecipe(id)}
           />
@@ -170,6 +172,7 @@ export default class Speakipe extends Component {
       case 'recipe':
         return (
           <Recipe
+            goToPage={page => this.setState({view: page})}
             individualRecipeData={this.state.individualRecipeData}
           />
         );
