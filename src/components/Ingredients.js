@@ -8,6 +8,7 @@ import {
   Button,
   StyleSheet,
   TextInput,
+  ActivityIndicator
 } from 'react-native';
 import {inlineStyles} from 'react-native-svg';
 
@@ -25,30 +26,45 @@ export default class Ingredients extends Component {
   }
 
   render() {
-    return (
-      <ScrollView>
-        {this.props.ingredients.map((ingredient, key) => (
-          <View style={styles.containerMain}>
-            <Text style={styles.button}> {ingredient} </Text>
-            <Button
-              title="D"
-              style={styles.deleteButton}
-              activeOpacity={0.6}
-              onPress={() => this.props.deleteIngredient(ingredient)}
-            />
-          </View>
-        ))}
-        <TextInput
-          style={styles.textInput}
-          placeholder="Type ingredient here..."
-          onChangeText={(newIngredient) => this.setState({newIngredient})}
-          ref={input => { this.textInput = input }}
-        />
-        {console.log(this.props.ingredients)}
-        <Button title="Add" onPress={() => this.addIngredient(this.state.newIngredient)} />
-        <Button title="See Recipes" onPress={() => this.props.goToRecipes()} />
-      </ScrollView>
-    );
+    if (this.props.ingredients.length !== 0 && this.props.ingredientsLoaded) {
+      return (
+        <ScrollView>
+          {this.props.ingredients.map((ingredient, key) => (
+            <View style={styles.containerMain}>
+              <Text style={styles.button}> {ingredient} </Text>
+              <Button
+                title="D"
+                style={styles.deleteButton}
+                activeOpacity={0.6}
+                onPress={() => this.props.deleteIngredient(ingredient)}
+              />
+            </View>
+          ))}
+          <TextInput
+            style={styles.textInput}
+            placeholder="Type ingredient here..."
+            onChangeText={(newIngredient) => this.setState({newIngredient})}
+            ref={input => { this.textInput = input }}
+          />
+          <Button title="Add" onPress={() => this.addIngredient(this.state.newIngredient)} />
+          <Button title="See Recipes" onPress={() => this.props.goToRecipes()} />
+          <Button title="Back" onPress={() => this.props.goToPage('record')} />
+        </ScrollView>
+      );
+    } else if (this.props.ingredients.length === 0 && this.props.ingredientsLoaded) {
+      return (
+        <ScrollView>
+              <Text> No ingredients detected! </Text>             
+          <Button title="Try again" onPress={() => this.props.goToPage('record')} />
+        </ScrollView>
+      ) 
+    } else {
+      return (
+        <View>
+          <ActivityIndicator />
+        </View>
+      )
+    }
   }
 }
 

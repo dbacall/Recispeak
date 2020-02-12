@@ -13,6 +13,13 @@ export default class VoiceNative extends React.Component {
     Voice.onSpeechResults = this.onSpeechResults.bind(this);
   }
 
+  componentDidMount() {
+    
+    // this.setState({
+    //   ingredientsLoaded: false,
+    // })
+  }
+
   componentWillUnmount() {
     Voice.destroy().then(Voice.removeAllListeners);
   }
@@ -41,6 +48,7 @@ export default class VoiceNative extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <View>
         <Button
