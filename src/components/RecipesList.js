@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {
   ScrollView,
+  StyleSheet,
   Text,
   View,
   Image,
@@ -13,25 +14,172 @@ export default class RecipesList extends Component {
     super(props);
   }
   render() {
-    return (
-      <ScrollView>
-        {this.props.recipesData.map((data, index) => (
-          <TouchableOpacity
-            onPress={() => this.props.goToIndividualRecipe(data.id)}>
+    let element = this.props.recipesData.map((data, index) => {
+      return (
+        <TouchableOpacity
+          key={index}
+          onPress={() => this.props.goToIndividualRecipe(data.id)}>
+          <View
+            pointerEvents="box-none"
+            style={{
+              height: 147,
+              flexDirection: "row",
+              alignItems: "flex-start",
+            }}>
             <Image
               source={{uri: data.image}}
-              style={{width: 400, height: 400}}
-            />
-            <Text>
-              <Text>{data.title}</Text>
-              <Text>
-                {' '}
-                {'\n'}Missing ingredients: {data.missedIngredientCount}{' '}
-              </Text>
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    );
+              style={styles.recipeImage}/>
+            <View
+              style={{
+                flex: 1,
+              }}/>
+            <View
+              pointerEvents="box-none"
+              style={{
+                width: 147,
+                height: 127,
+                marginTop: 3,
+                alignItems: "flex-end",
+              }}>
+              <View
+                pointerEvents="box-none"
+                style={{
+                  width: 110,
+                  height: 17,
+                }}>
+                <View
+                  style={styles.rectangle21View}/>
+                <Text
+                  style={styles.missingIngredientsText}>Missing Ingredients: {data.missedIngredientCount}
+                </Text>
+              </View>
+              <Text
+                style={styles.recipeTitleText}>{data.title}</Text>
+            </View>
+          </View>
+          <Image
+            source={require("./../../assets/images/path-9.png")}
+            style={styles.path9Image}/>
+        </TouchableOpacity>
+      )
+    });
+    return (
+      <View
+        style={styles.viewView}>
+        <ScrollView
+          contentContainerStyle={styles.viewScrollView}>
+          <View
+            pointerEvents="box-none"
+            style={{
+              alignSelf: "stretch",
+              height: 55,
+            }}>
+            <View
+              style={styles.rectangle20View}/>
+            <View
+              style={styles.group9View}>
+              <Image
+                source={require("./../../assets/images/group-6.png")}
+                style={styles.group6Image}/>
+            </View>
+          </View>
+          <View>
+            {element}
+          </View>
+        </ScrollView>
+      </View>
+    )
   }
 }
+
+const styles = StyleSheet.create({
+  viewView: {
+    backgroundColor: "white",
+    flex: 1,
+  },
+  viewScrollView: {
+    backgroundColor: "transparent",
+    alignItems: "flex-start",
+  },
+  rectangle20View: {
+    backgroundColor: "rgb(38, 41, 56)",
+    borderWidth: 1,
+    borderColor: "rgb(112, 112, 112)",
+    borderStyle: "solid",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 55,
+  },
+  group9View: {
+    backgroundColor: "transparent",
+    position: "absolute",
+    left: 17,
+    width: 33,
+    top: 12,
+    height: 32,
+    justifyContent: "center",
+  },
+  group6Image: {
+    resizeMode: "center",
+    backgroundColor: "transparent",
+    width: null,
+    height: 32,
+  },
+  viewTwoView: {
+    backgroundColor: "transparent",
+    width: 324,
+    height: 157,
+    marginLeft: 15,
+    marginTop: 19,
+  },
+  recipeImage: {
+    resizeMode: "center",
+    backgroundColor: "transparent",
+    width: 165,
+    height: 147,
+  },
+  rectangle21View: {
+		backgroundColor: "rgb(211, 199, 193)",
+		borderRadius: 8.5,
+		position: "absolute",
+		right: 0,
+		width: 129,
+		top: 9,
+		height: 20,
+	},
+  missingIngredientsText: {
+		color: "black",
+		fontFamily: "AdobeArabicRegular",
+		fontSize: 14,
+		fontStyle: "normal",
+		fontWeight: "normal",
+		textAlign: "left",
+		backgroundColor: "transparent",
+		position: "absolute",
+		right: 14,
+		width: 100,
+		top: 10,
+	},
+  recipeTitleText: {
+    color: "black",
+    fontFamily: "AdobeArabicRegular",
+    fontSize: 28,
+    fontStyle: "normal",
+    fontWeight: "normal",
+    textAlign: "left",
+    backgroundColor: "transparent",
+    width: 134,
+    marginRight: 13,
+    marginTop: 17,
+  },
+  path9Image: {
+    resizeMode: "cover",
+    backgroundColor: "transparent",
+    alignSelf: "flex-start",
+    width: 311,
+    height: 3,
+    marginTop: 10,
+  },
+})
