@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {SPOONACULAR_API_KEY} from '../utils/RapidApiSpoonacularApiKey';
+// import {SPOONACULAR_API_KEY} from '../utils/RapidApiSpoonacularApiKey';
 import {ScrollView, Text, View, Image, Button} from 'react-native';
 
 export default class Recipe extends Component {
