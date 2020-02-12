@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
 		left: 0,
 		right: 0,
 		top: 0,
-    height: 140,
+    // height: 140,
 	},
 	goBackImage: {
 		resizeMode: "center",
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
 		textAlign: "left",
 		alignSelf: "flex-end",
 		marginRight: 80,
-    marginTop: 1,
+    marginTop: -100,
 	},
 	placeScrollView: {
 		backgroundColor: "transparent",
@@ -291,6 +291,7 @@ const styles = StyleSheet.create({
 		width: 22,
 		height: 22,
 		marginBottom: 5,
+    marginRight: 9,
 	},
 	plusButtonImage: {
 		resizeMode: "contain",
@@ -328,9 +329,9 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		padding: 0,
 		position: "absolute",
-		left: 14,
+		left: 17,
 		width: 33,
-		top: 119,
+		top: 12,
 		height: 32,
 	},
 })
