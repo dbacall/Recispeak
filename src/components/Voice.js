@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, Button, AppRegistry} from 'react-native';
 import Voice from 'react-native-voice';
-import Ingredients from './Ingredients';
 
 export default class VoiceNative extends React.Component {
   constructor(props) {

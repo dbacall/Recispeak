@@ -2,22 +2,18 @@ import React, {Component} from 'react';
 import {
   ScrollView,
   Text,
-  Alert,
   View,
-  TouchableOpacity,
   Button,
   StyleSheet,
   TextInput,
   ActivityIndicator
 } from 'react-native';
-import {inlineStyles} from 'react-native-svg';
 
 export default class Ingredients extends Component {
   constructor(props) {
     super(props);
     this.state = {
       newIngredient: '',
-      ingredientsLoaded: this.props.ingredientsLoaded
      }
   }
 
@@ -30,7 +26,7 @@ export default class Ingredients extends Component {
   }
 
   render() {
-    if (this.props.ingredients.length !== 0 && this.state.ingredientsLoaded) {
+    if (this.props.ingredients.length !== 0 && this.props.ingredientsLoaded) {
       return (
         <ScrollView>
           {this.props.ingredients.map((ingredient, key) => (
