@@ -63,7 +63,8 @@ export default class VoiceNative extends React.Component {
     					style={{
     						flex: 1,
     					}}/>
-    				<View
+    				<TouchableOpacity
+              onPress={this._startRecognition.bind(this)}
     					style={styles.viewTwoView}>
     					<View
     						pointerEvents="box-none"
@@ -75,8 +76,7 @@ export default class VoiceNative extends React.Component {
     							bottom: 0,
     							justifyContent: "center",
     						}}>
-    						<TouchableOpacity
-    							onPress={this._startRecognition.bind(this)}
+    						<View
     							style={styles.rectangle12Button}/>
     					</View>
     					<View
@@ -100,12 +100,13 @@ export default class VoiceNative extends React.Component {
     							source={require("../../assets/images/mic-copy.png")}
     							style={styles.micCopyImage}/>
     					</View>
-    				</View>
+    				</TouchableOpacity>
     			</View>
     		</View>
     );
   }
 }
+
 const styles = StyleSheet.create({
 	viewView: {
 		backgroundColor: "white",
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
 	viewTwoView: {
 		backgroundColor: "transparent",
 		width: 180,
-		height: 53,
+		height: 64,
 	},
 	rectangle12ButtonText: {
 		color: "black",
@@ -185,7 +186,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "transparent",
 		width: 22,
 		height: 22,
-		marginBottom: 7,
+		marginBottom: 13,
 	},
 })
 AppRegistry.registerComponent('VoiceNative', () => VoiceNative);
