@@ -17,11 +17,12 @@ export default class Ingredients extends Component {
     this.state = { newIngredient: '' }
   }
 
-  addIngredient(newIngredient) {
+  addIngredient(newIngredient, textInput=this.textInput) {
     this.setState({
       ingredients: this.props.ingredients.push(newIngredient),
     })
-    this.textInput.clear()
+    textInput.clear()
+    return this.state.ingredients
   }
 
   render() {
