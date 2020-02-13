@@ -18,6 +18,7 @@ describe('Voice component should work as expected', () => {
   });
 
   test('pressing start recording button calls _startRecognition', () => {
+    console.log(require('../../assets/images/0deb274c700ff6d8ea6439fb62861546.png'))
     const spy = jest.spyOn(component, '_startRecognition');
     component.forceUpdate();
     wrapper

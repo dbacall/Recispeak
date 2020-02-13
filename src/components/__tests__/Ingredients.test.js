@@ -69,6 +69,7 @@ describe('Ingredients component should work as expected', () => {
   });
 
   test('back button calls goToPage function', () => {
+    console.log(wrapper.debug())
     wrapper
       .find(Button)
       .at(4)
