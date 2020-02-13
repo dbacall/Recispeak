@@ -57,7 +57,7 @@ export default class Speakipe extends Component {
           ingredients: array,
           ingredientsLoaded: true,
           isLoading: false,
-          ingredientsLoaded: true
+          ingredientsLoaded: true,
         });
       })
       .catch(err => {
@@ -173,7 +173,7 @@ export default class Speakipe extends Component {
           <RecipesList
             recipesData={this.state.recipesData}
             goToPage={page => this.setState({view: page})}
-            goToIndividualRecipe={(id) => this.getIndividualRecipe(id)}
+            goToIndividualRecipe={id => this.getIndividualRecipe(id)}
           />
         );
       case 'recipe':
@@ -181,6 +181,7 @@ export default class Speakipe extends Component {
           <Recipe
             goToPage={page => this.setState({view: page})}
             individualRecipeData={this.state.individualRecipeData}
+            goToRecipes={() => this.getRecipes()}
           />
         );
       default:
