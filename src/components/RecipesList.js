@@ -3,12 +3,12 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  View,
   Image,
-  ActivityIndicator,
   TouchableOpacity,
+  Button,
 } from 'react-native';
-import {Dropdown} from 'react-native-material-dropdown';
+import { Dropdown } from 'react-native-material-dropdown';
+import { Recipe } from '../Helpers';
 
 export default class RecipesList extends Component {
   constructor(props) {
@@ -17,6 +17,7 @@ export default class RecipesList extends Component {
       missingIngredientsAmount: '5+'
     }
   }
+
   render() {
     let element = this.props.recipesData.map((data, index) => (
       this.state.missingIngredientsAmount === '5+' ?

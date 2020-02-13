@@ -2,21 +2,22 @@ import React, {Component} from 'react';
 import {
   ScrollView,
   Text,
-  Alert,
   View,
-  TouchableOpacity,
   Button,
   StyleSheet,
   TextInput,
   Image,
   ActivityIndicator,
 } from 'react-native';
-import {inlineStyles} from 'react-native-svg';
+
 export default class Ingredients extends Component {
   constructor(props) {
     super(props);
-    this.state = { newIngredient: '' }
+    this.state = {
+      newIngredient: '',
+     }
   }
+
   addIngredient(newIngredient) {
     if(this.state.newIngredient.length > 0) {
       this.setState({

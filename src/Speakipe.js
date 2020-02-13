@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {ScrollView, Text, View, Button, ActivityIndicator} from 'react-native';
+import {View, ActivityIndicator} from 'react-native';
 import RecipesList from './components/RecipesList';
 import VoiceNative from './components/Voice';
 import Recipe from './components/Recipe';
 import Ingredients from './components/Ingredients';
-import Voice from 'react-native-voice';
 import {
   RAPID_API_KEY,
   SPOONACULAR_API_KEY,
@@ -58,6 +57,7 @@ export default class Speakipe extends Component {
           ingredients: array,
           ingredientsLoaded: true,
           isLoading: false,
+          ingredientsLoaded: true
         });
       })
       .catch(err => {
@@ -123,7 +123,6 @@ export default class Speakipe extends Component {
 
   // Individual Recipe API
   getIndividualRecipe(id) {
-    console.log(this.state.individualRecipeID);
     let body = 'https://api.spoonacular.com/recipes/';
     let end = '/information?includeNutrition=true&';
     let apiKey = 'apiKey=' + SPOONACULAR_API_KEY;
@@ -132,7 +131,6 @@ export default class Speakipe extends Component {
     return fetch(url)
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
         this.setState({
           individualRecipeData: responseJson,
           view: 'recipe',

@@ -1,3 +1,5 @@
+require('jest-fetch-mock').enableMocks()
+
 jest.mock('react-native-voice', () => {
   return {
     addEventListener: jest.fn(),

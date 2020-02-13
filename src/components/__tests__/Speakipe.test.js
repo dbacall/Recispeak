@@ -15,6 +15,7 @@ describe('Speakipe should work as expected', () => {
     configure({adapter: new Adapter()});
     wrapper = shallow(<Speakipe />);
     component = wrapper.instance();
+    fetch.resetMocks();
   });
 
   test('should render voice component when app is opened', () => {
@@ -56,6 +57,13 @@ describe('Speakipe should work as expected', () => {
 
     expect(spy).toHaveBeenCalled();
   });
+
+  // test('feature test start to finish', () => {
+  //   component.setState({ transcript: ['This is an apple and a banana']})
+  //   component.componentDidUpdate()
+  //
+  //   console.log(component.state.ingredients)
+  // });
 
   // test('voice page should render correctly', () => {
   //   const voice = renderer.create(<VoiceNative />).toJSON();

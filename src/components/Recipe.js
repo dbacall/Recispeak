@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {SPOONACULAR_API_KEY} from '../utils/RapidApiSpoonacularApiKey';
 import {StyleSheet, Button, ScrollView, TouchableOpacity, Text, View, Image, ActivityIndicator} from 'react-native';
+
 export default class Recipe extends Component {
   constructor(props) {
     super(props);

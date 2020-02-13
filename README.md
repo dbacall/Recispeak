@@ -2,20 +2,15 @@
 
 <a href="https://codeclimate.com/github/dbacall/Speakipe/maintainability"><img src="https://api.codeclimate.com/v1/badges/e15ffaeec6a3a2d033c8/maintainability" /></a> <a href="https://codeclimate.com/github/dbacall/Speakipe/test_coverage"><img src="https://api.codeclimate.com/v1/badges/e15ffaeec6a3a2d033c8/test_coverage" /></a> [![CircleCI](https://circleci.com/gh/dbacall/Speakipe.svg?style=svg)](https://circleci.com/gh/dbacall/Speakipe)
 
-[Quick start](#quick-start) | [User stories](#user-stories) | [Tech used](#tech-used)
+[Quick Start](#quick-start) | [User Stories](#user-stories) | [Features](#features)| [Code Style](#code-style) | [Tech used](#tech-used) | [Getting Started](#getting-started)
 
 ## Quick start
 
-- To install dependencies, run ```npm install``` in the terminal
-- To run the tests and see code coverage, run ```npm test -- --coverage --watchAll=false``` in the terminal
-- To run the linter (ESLint), run ```npm run lint``` in the terminal
 - EditorConfig was used to increase the code quality
 - CodeClimate is attached to our repository to check code quality and maintainability
 - Circle CI integrated the tests and the linter to supply an additional safeguard when merging to master
-<!-- Need to add the below -->
-- A mobile accessibility checker was used to increase the accessibility of the app
 
-## User stories
+## User Stories
 
 ```
 As a user
@@ -29,8 +24,13 @@ I want to be able to see the list of ingredients
 ```
 ```
 As a user
-So I can correct anything wrong on the list
-I want to be able to edit that list manually
+So I can remove anything wrong on the list
+I want to be able to delete from the ingredients list
+```
+```
+As a user
+So I can include ingredients that I forgot to say
+I want to be able to add ingredients to the ingredients list manually
 ```
 ```
 As a user
@@ -42,11 +42,54 @@ As a user
 So I can cook the recipe
 I want to be able to view an individual recipe
 ```
+```
+As a user
+So I know what to do if I fail to say any ingredients
+I want to see a page that tells me what to do next in this situation
+```
 
-## Tech used
+## Features
+
+- Speech Recognition
+- Conversion of speech into ingredients list
+- Add ingredients manually
+- Delete ingredients
+- See list of recipes based on ingredients
+- See number of missing ingredients from recipes
+- See individual recipes with instructions
+
+## Code Style
+
+- OOD
+- TDD
+- Spiking
+
+## Tech Used
 
 - React Native
 - Jest
 - React Native Voice
+- Supernova Studio
 - Circle CI
+- Code Climate
+- Rapid API
 - Spoonacular API (Named Entity Recognition & Search Recipes by Ingredients)
+
+## Getting Started
+
+- Fork this repo and clone it to your local system
+- To install dependencies, run ```npm install``` in the terminal
+- Go to this link https://facebook.github.io/react-native/docs/getting-started
+- Click on React Native CLI Quickstart
+- Click on your preferred development OS
+- Click on Android and follow the instructions in the 'Android development environment' section
+- From your terminal run `react-native run-android`
+
+## Running the tests
+
+- To run the tests and see code coverage, run ```npm test -- --coverage``` in the terminal
+
+## Running the linter
+
+- To run the linter (ESLint), run ```npm run lint``` in the terminal
+

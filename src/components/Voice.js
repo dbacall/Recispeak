@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, View, Image, StyleSheet, Text, AppRegistry} from 'react-native';
 import Voice from 'react-native-voice';
-import Ingredients from './Ingredients';
+
 export default class VoiceNative extends React.Component {
   constructor(props) {
     super(props);
@@ -35,6 +35,7 @@ export default class VoiceNative extends React.Component {
     }
   }
   render() {
+    console.log(this.props)
     return (
       <View
     			style={styles.viewView}>
