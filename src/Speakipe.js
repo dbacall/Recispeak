@@ -17,6 +17,7 @@ export default class Speakipe extends Component {
       view: 'record',
       transcript: [],
       ingredients: [],
+      ingredientsLoaded: false,
       recipesData: [],
       individualRecipeData: [],
     };
@@ -55,6 +56,7 @@ export default class Speakipe extends Component {
         responseJson.annotations.map(val => array.push(val.annotation));
         this.setState({
           ingredients: array,
+          ingredientsLoaded: true,
           isLoading: false,
         });
       })
@@ -77,6 +79,11 @@ export default class Speakipe extends Component {
     if (this.state.individualRecipeID !== prevState.individualRecipeID) {
       this.setState({
         view: 'recipe',
+      });
+    }
+    if (this.state.view !== prevState.view && this.state.view === 'record') {
+      this.setState({
+        ingredientsLoaded: false,
       });
     }
   }
@@ -141,6 +148,7 @@ export default class Speakipe extends Component {
       case 'record':
         return (
           <VoiceNative
+            ingredientsLoaded={this.state.ingredientsLoaded}
             results={this.state.transcript}
             setTranscript={results => this.setState({transcript: results})}
             goToPage={page => this.setState({view: page})}
@@ -157,6 +165,7 @@ export default class Speakipe extends Component {
               })
             }
             ingredients={this.state.ingredients}
+            ingredientsLoaded={this.state.ingredientsLoaded}
             goToRecipes={() => this.getRecipes()}
             goToPage={page => this.setState({view: page})}
           />

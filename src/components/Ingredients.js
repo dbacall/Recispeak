@@ -9,6 +9,7 @@ import {
   StyleSheet,
   TextInput,
   Image,
+  ActivityIndicator,
 } from 'react-native';
 import {inlineStyles} from 'react-native-svg';
 export default class Ingredients extends Component {
@@ -23,8 +24,9 @@ export default class Ingredients extends Component {
     this.textInput.clear()
   }
   render() {
-    return (
-      <View
+    if (this.props.ingredients.length !== 0 && this.props.ingredientsLoaded) {
+      return (
+        <View
       style={styles.viewView}>
       <View
         pointerEvents="box-none"
@@ -149,8 +151,48 @@ export default class Ingredients extends Component {
 						style={styles.seeRecipesButtonText}>See Recipes</Text>
 				</TouchableOpacity>
     </View>
-    );
+      );
+    } else if (this.props.ingredients.length === 0 && this.props.ingredientsLoaded) {
+      return (
+        <View
+				style={styles.viewView}>
+				<View
+					pointerEvents="box-none"
+					style={{
+						alignSelf: "stretch",
+						height: 210,
+					}}>
+					<Image
+						source={require("./../../assets/images/8fc08fd48cd8eda6dfca9ef25047c865.png")}
+						style={styles.fc08fd48cd8eda6dfcaImage}/>
+					<Image
+						source={require("./../../assets/images/ellipse-1.png")}
+						style={styles.ellipse1Image}/>
+					<Text
+						style={styles.textText}>{"<"}</Text>
+				</View>
+				<Text
+					style={styles.noIngredientsFoundText}>No ingredients found</Text>
+				<Image
+					source={require("./../../assets/images/path-3.png")}
+					style={styles.path3Image}/>
+				<TouchableOpacity
+					onPress={() => this.props.goToPage('record')}
+					style={styles.group1Button}>
+					<Text
+						style={styles.group1ButtonText}>Try Again</Text>
+				</TouchableOpacity>
+			</View>
+      )
+    } else {
+      return (
+        <View>
+          <ActivityIndicator />
+        </View>
+      )
+    }
   }
+    
 }
 const styles = StyleSheet.create({
 	viewView: {
@@ -333,5 +375,47 @@ const styles = StyleSheet.create({
 		width: 33,
 		top: 12,
 		height: 32,
+  },
+  noIngredientsFoundText: {
+		color: "black",
+		fontFamily: "AdobeArabicRegular",
+		fontSize: 30,
+		fontStyle: "normal",
+		fontWeight: "normal",
+		textAlign: "left",
+		backgroundColor: "transparent",
+		marginTop: 100,
+  },
+  path3Image: {
+		resizeMode: "cover",
+		backgroundColor: "transparent",
+		width: 230,
+		height: 3,
+		marginTop: 8,
+  },
+  group1ButtonText: {
+		color: "white",
+		fontFamily: "AdobeArabicRegular",
+		fontSize: 21,
+		fontStyle: "normal",
+		fontWeight: "normal",
+		textAlign: "left",
+	},
+	group1Button: {
+		backgroundColor: "rgb(38, 41, 56)",
+		borderRadius: 11,
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "center",
+		padding: 0,
+		alignSelf: "flex-end",
+		width: 141,
+		height: 33,
+		marginRight: 104,
+		marginTop: 61,
+	},
+	group1ButtonImage: {
+		resizeMode: "contain",
+		marginRight: 10,
 	},
 })
