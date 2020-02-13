@@ -173,8 +173,8 @@ export default class Speakipe extends Component {
       case 'recipes_list':
         return (
           <RecipesList
-            goToPage={page => this.setState({view: page})}
             recipesData={this.state.recipesData}
+            goToPage={page => this.setState({view: page})}
             goToIndividualRecipe={(id) => this.getIndividualRecipe(id)}
           />
         );

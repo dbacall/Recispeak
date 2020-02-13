@@ -8,61 +8,110 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
+import {Dropdown} from 'react-native-material-dropdown';
 
 export default class RecipesList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      missingIngredientsAmount: '5+'
+    }
   }
   render() {
-    let element = this.props.recipesData.map((data, index) => {
-      return (
-        <TouchableOpacity
-          key={index}
-          onPress={() => this.props.goToIndividualRecipe(data.id)}>
+    let element = this.props.recipesData.map((data, index) => (
+      this.state.missingIngredientsAmount === '5+' ?
+      <TouchableOpacity
+        key={index}
+        onPress={() => this.props.goToIndividualRecipe(data.id)}>
+        <View
+          pointerEvents="box-none"
+          style={{
+            height: 147,
+            flexDirection: "row",
+            alignItems: "flex-start",
+          }}>
+          <Image
+            source={{uri: data.image}}
+            style={styles.recipeImage}/>
+          <View
+            style={{
+              flex: 1,
+            }}/>
           <View
             pointerEvents="box-none"
             style={{
-              height: 147,
-              flexDirection: "row",
-              alignItems: "flex-start",
+              width: 147,
+              height: 127,
+              marginTop: 3,
+              alignItems: "flex-end",
             }}>
-            <Image
-              source={{uri: data.image}}
-              style={styles.recipeImage}/>
-            <View
-              style={{
-                flex: 1,
-              }}/>
             <View
               pointerEvents="box-none"
               style={{
-                width: 147,
-                height: 127,
-                marginTop: 3,
-                alignItems: "flex-end",
+                width: 110,
+                height: 17,
               }}>
+              <View
+                style={styles.rectangle21View}/>
+              <Text
+                style={styles.missingIngredientsText}>Missing Ingredients: {data.missedIngredientCount}
+              </Text>
+            </View>
+            <Text
+              style={styles.recipeTitleText}>{data.title}</Text>
+          </View>
+        </View>
+        <Image
+          source={require("./../../assets/images/path-9.png")}
+          style={styles.path9Image}/>
+      </TouchableOpacity> :
+          data.missedIngredientCount <= this.state.missingIngredientsAmount ?
+          <TouchableOpacity
+            key={index}
+            onPress={() => this.props.goToIndividualRecipe(data.id)}>
+            <View
+              pointerEvents="box-none"
+              style={{
+                height: 147,
+                flexDirection: "row",
+                alignItems: "flex-start",
+              }}>
+              <Image
+                source={{uri: data.image}}
+                style={styles.recipeImage}/>
+              <View
+                style={{
+                  flex: 1,
+                }}/>
               <View
                 pointerEvents="box-none"
                 style={{
-                  width: 110,
-                  height: 17,
+                  width: 147,
+                  height: 127,
+                  marginTop: 3,
+                  alignItems: "flex-end",
                 }}>
                 <View
-                  style={styles.rectangle21View}/>
+                  pointerEvents="box-none"
+                  style={{
+                    width: 110,
+                    height: 17,
+                  }}>
+                  <View
+                    style={styles.rectangle21View}/>
+                  <Text
+                    style={styles.missingIngredientsText}>Missing Ingredients: {data.missedIngredientCount}
+                  </Text>
+                </View>
                 <Text
-                  style={styles.missingIngredientsText}>Missing Ingredients: {data.missedIngredientCount}
-                </Text>
+                  style={styles.recipeTitleText}>{data.title}</Text>
               </View>
-              <Text
-                style={styles.recipeTitleText}>{data.title}</Text>
             </View>
-          </View>
-          <Image
-            source={require("./../../assets/images/path-9.png")}
-            style={styles.path9Image}/>
-        </TouchableOpacity>
-      )
-    });
+            <Image
+              source={require("./../../assets/images/path-9.png")}
+              style={styles.path9Image}/>
+          </TouchableOpacity> : null
+        ));
     return (
       <View
         style={styles.viewView}>
@@ -84,6 +133,22 @@ export default class RecipesList extends Component {
   								style={styles.group9ButtonImage}/>
   						</TouchableOpacity>
           </View>
+          <Dropdown
+						containerStyle={styles.dropdownView}
+            label='Filter By Missing Ingredients'
+            data={[{
+              value: 1,
+            }, {
+              value: 2,
+            }, {
+              value: 3,
+            }, {
+              value: 4,
+            }, {
+              value: '5+',
+            }]}
+            onChangeText={ (value) => { this.setState({missingIngredientsAmount: value })}}
+          />
           <View>
             {element}
           </View>
@@ -127,6 +192,16 @@ const styles = StyleSheet.create({
 	},
 	group9ButtonImage: {
 		resizeMode: "contain",
+	},
+  dropdownView: {
+		// backgroundColor: "transparent",
+		// opacity: 0.62,
+		width: "80%",
+    fontFamily: "AdobeArabicRegular",
+    fontSize: 14,
+		// height: 27,
+		// marginTop: 5,
+
 	},
   viewTwoView: {
 		backgroundColor: "transparent",
