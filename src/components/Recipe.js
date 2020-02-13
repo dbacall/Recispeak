@@ -7,6 +7,7 @@ export default class Recipe extends Component {
   }
 
   render() {
+    console.log('here')
     let recipe = this.props.individualRecipeData;
     let ingredientsList = this.props.individualRecipeData.extendedIngredients;
     let instructions = this.props.individualRecipeData.analyzedInstructions;
@@ -36,9 +37,10 @@ export default class Recipe extends Component {
 								style={styles.recipeImage}/>
 							<Text
 								style={styles.recipeTitle}>{recipe.title}</Text>
-						</View>
+            </View>           
+
             <TouchableOpacity
-							onPress={() => this.props.goToPage('recipes_list')}
+							onPress={() => this.props.goToPage("recipes_list")}
 							style={styles.group6Button}>
 							<Image
 								source={require("./../../assets/images/arrow.png")}
@@ -324,7 +326,8 @@ const styles = StyleSheet.create({
 		left: 13,
 		width: 33,
 		top: 10,
-		height: 32,
+    height: 32,
+    zIndex: 1
 	},
 	group6ButtonImage: {
 		resizeMode: "contain",
