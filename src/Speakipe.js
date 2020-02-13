@@ -193,6 +193,7 @@ export default class Speakipe extends Component {
   }
 
   render() {
+    console.disableYellowBox = true;
     return this.renderView();
   }
 }

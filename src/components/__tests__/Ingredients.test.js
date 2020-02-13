@@ -75,5 +75,4 @@ describe('Ingredients component should work as expected', () => {
     expect(wrapper2.find('Text')).toHaveLength(1);
     expect(wrapper2.find('Button')).toHaveLength(1);
   });
-
 });
