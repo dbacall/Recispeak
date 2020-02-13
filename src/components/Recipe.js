@@ -41,7 +41,7 @@ export default class Recipe extends Component {
 							onPress={() => this.props.goToPage('recipes_list')}
 							style={styles.group6Button}>
 							<Image
-								source={require("./../../assets/images/group-6.png")}
+								source={require("./../../assets/images/arrow.png")}
 								style={styles.group6ButtonImage}/>
 						</TouchableOpacity>
 						<View
@@ -103,7 +103,7 @@ export default class Recipe extends Component {
                 </Text>
               )}
               {instructions[key].steps.map((i, k) => (
-              <Text>{instructions[key].steps[k].number}.  {instructions[key].steps[k].step}{"\n"}{"\n"}</Text>
+              <Text key={k}>{instructions[key].steps[k].number}.  {instructions[key].steps[k].step}{"\n"}{"\n"}</Text>
               ))}
             </Text>
             ))}

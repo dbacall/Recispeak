@@ -80,7 +80,7 @@ export default class RecipesList extends Component {
   							onPress={() => this.props.goToPage("ingredients")}
   							style={styles.group9Button}>
   							<Image
-  								source={require("./../../assets/images/group-6.png")}
+  								source={require("./../../assets/images/arrow.png")}
   								style={styles.group9ButtonImage}/>
   						</TouchableOpacity>
           </View>
