@@ -43,7 +43,7 @@ export default class Ingredients extends Component {
   						onPress={() => this.props.goToPage("record")}
   						style={styles.goBackButton}>
   						<Image
-  							source={require("./../../assets/images/ellipse-1.png")}
+  							source={require("./../../assets/images/arrow.png")}
   							style={styles.goBackButtonImage}/>
   				</TouchableOpacity>
       </View>
@@ -194,7 +194,7 @@ export default class Ingredients extends Component {
       )
     }
   }
-    
+
 }
 const styles = StyleSheet.create({
 	viewView: {
