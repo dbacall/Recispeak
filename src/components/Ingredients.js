@@ -2,23 +2,29 @@ import React, {Component} from 'react';
 import {
   ScrollView,
   Text,
+  Alert,
   View,
+  TouchableOpacity,
   Button,
   StyleSheet,
   TextInput,
   Image,
-  TouchableOpacity,
   ActivityIndicator,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native';
+
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
 
 export default class Ingredients extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      newIngredient: '',
-     }
+    this.state = { newIngredient: '' }
   }
-
   addIngredient(newIngredient) {
     if(this.state.newIngredient.length > 0) {
       this.setState({
@@ -30,6 +36,7 @@ export default class Ingredients extends Component {
   render() {
     if (this.props.ingredients.length !== 0 && this.props.ingredientsLoaded) {
       return (
+        <DismissKeyboard>
         <View
       style={styles.viewView}>
       <View
@@ -45,7 +52,7 @@ export default class Ingredients extends Component {
   						onPress={() => this.props.goToPage("record")}
   						style={styles.goBackButton}>
   						<Image
-  							source={require("./../../assets/images/arrow.png")}
+  							source={require("./../../assets/images/ellipse-1.png")}
   							style={styles.goBackButtonImage}/>
   				</TouchableOpacity>
       </View>
@@ -133,7 +140,8 @@ export default class Ingredients extends Component {
               placeholder="Type ingredient"
               onChangeText={(newIngredient) => this.setState({newIngredient})}
               ref={input => { this.textInput = input }}
-              style={styles.typeIngredientsTextInput}/>
+              style={styles.typeIngredientsTextInput}
+              />
             <View
               style={{
                 flex: 1,
@@ -155,6 +163,7 @@ export default class Ingredients extends Component {
 						style={styles.seeRecipesButtonText}>See Recipes</Text>
 				</TouchableOpacity>
     </View>
+    </DismissKeyboard>
       );
     } else if (this.props.ingredients.length === 0 && this.props.ingredientsLoaded) {
       return (
@@ -170,7 +179,7 @@ export default class Ingredients extends Component {
 						source={require("./../../assets/images/8fc08fd48cd8eda6dfca9ef25047c865.png")}
 						style={styles.fc08fd48cd8eda6dfcaImage}/>
 					<Image
-						source={require("./../../assets/images/ellipse-1.png")}
+						source={require("./../../assets/images/arrow.png")}
 						style={styles.ellipse1Image}/>
 					<Text
 						style={styles.textText}>{"<"}</Text>
@@ -196,7 +205,7 @@ export default class Ingredients extends Component {
       )
     }
   }
-
+    
 }
 const styles = StyleSheet.create({
 	viewView: {
