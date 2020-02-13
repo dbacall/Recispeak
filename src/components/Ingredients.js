@@ -186,11 +186,6 @@ export default class Ingredients extends Component {
               source={require('./../../assets/images/8fc08fd48cd8eda6dfca9ef25047c865.png')}
               style={styles.fc08fd48cd8eda6dfcaImage}
             />
-            <Image
-              source={require('./../../assets/images/arrow.png')}
-              style={styles.ellipse1Image}
-            />
-            <Text style={styles.textText}>{'<'}</Text>
           </View>
           <Text style={styles.noIngredientsFoundText}>
             No ingredients found
