@@ -197,13 +197,9 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   dropdownView: {
-    // backgroundColor: "transparent",
-    // opacity: 0.62,
-    width: '80%',
+    width: 250,
     fontFamily: 'AdobeArabicRegular',
     fontSize: 14,
-    // height: 27,
-    // marginTop: 5,
   },
   viewTwoView: {
     backgroundColor: 'transparent',
