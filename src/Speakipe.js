@@ -55,6 +55,7 @@ export default class Speakipe extends Component {
         responseJson.annotations.map(val => array.push(val.annotation));
         this.setState({
           ingredients: array,
+          ingredientsLoaded: true,
           isLoading: false,
           ingredientsLoaded: true
         });
@@ -163,8 +164,8 @@ export default class Speakipe extends Component {
             }
             ingredients={this.state.ingredients}
             ingredientsLoaded={this.state.ingredientsLoaded}
-            goToPage={page => this.setState({view: page})}
             goToRecipes={() => this.getRecipes()}
+            goToPage={page => this.setState({view: page})}
           />
         );
       case 'recipes_list':
