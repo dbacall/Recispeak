@@ -40,7 +40,7 @@ export default class VoiceNative extends React.Component {
     			style={styles.viewView}>
     			<Image
     				source={require("../../assets/images/0deb274c700ff6d8ea6439fb62861546.png")}
-    				style={styles.deb274c700ff6d8ea64Image}/>
+    				style={styles.backgroundImage}/>
     			<View
     				pointerEvents="box-none"
     				style={{
@@ -112,13 +112,11 @@ const styles = StyleSheet.create({
 		backgroundColor: "white",
 		flex: 1,
 	},
-	deb274c700ff6d8ea64Image: {
+	backgroundImage: {
 		resizeMode: "cover",
 		backgroundColor: "transparent",
 		position: "absolute",
-		left: -86,
 		right: -46,
-		top: -65,
 		bottom: -34,
 	},
 	titleView: {
