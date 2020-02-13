@@ -3,6 +3,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  View,
   Image,
   TouchableOpacity,
   Button,
