@@ -14,11 +14,11 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
-const DismissKeyboard = ({children}) => (
-  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    {children}
-  </TouchableWithoutFeedback>
-);
+// const DismissKeyboard = ({children}) => (
+//   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+//     {children}
+//   </TouchableWithoutFeedback>
+// );
 
 export default class Ingredients extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ export default class Ingredients extends Component {
   render() {
     if (this.props.ingredients.length !== 0 && this.props.ingredientsLoaded) {
       return (
-        <DismissKeyboard>
+        // <DismissKeyboard>
           <View style={styles.viewView}>
             <View
               pointerEvents="box-none"
@@ -168,7 +168,7 @@ export default class Ingredients extends Component {
               <Text style={styles.seeRecipesButtonText}>See Recipes</Text>
             </TouchableOpacity>
           </View>
-        </DismissKeyboard>
+        // </DismissKeyboard>
       );
     } else if (
       this.props.ingredients.length === 0 &&
