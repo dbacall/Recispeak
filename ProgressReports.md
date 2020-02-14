@@ -97,3 +97,38 @@
 - Write Individual Recipe component and render over JSON object
 - Complete navigation between components
 - Further research on how to write unit/feature tests
+
+## Sprint 2
+[Monday](#monday) | [Tuesday](#tuesday) | [Wednesday](#wednesday) | [Thursday](#thursday) | [Friday](#friday) | [Sprint Demo 2 Coach Feedback](#sprint-demo-2-coach-feedback) | [Testing with Jest/Enzyme](#testing-with-jest/enzyme)
+### Monday
+- Restructure navigation into a separate class (Speakipe.js)
+  - Moved the logic from ingredients and recipes list pages here
+  - This made more sense and made the overall code more readable
+  - Spoke with a React developer who advised that this was a best practise approach
+- Add feature: delete button for ingredients
+- Explore Supernova Studio (design to code software) in readiness for styling
+### Tuesday
+- Strong time boxing: had a number of bugs and chores to fix. All pairs/solos successfully completed tasks:
+- Add feature: add an ingredient manually
+- Writing unit and feature tests
+- Refactor individual recipe page logic and move to Speakipe.js navigator and fix API bug (not rendering correctly)
+- Design mock-ups ready for styling in Adobe XD
+### Wednesday
+- Planning: Decided what features were realistic to implement in one day before feature freeze that night
+- Add feature: filter for number of missing ingredients required to make a recipe
+- Add feature: back buttons on every page (improved navigation)
+- Styling using Supernova Studio
+  - Software was helpful to use when designing a sleek user experience at speed
+  - Time constraints meant we had little time to learn this software and the powerful tools it has to offer
+  - Time constraints meant our views were long and somewhat convoluted - no time yet to refactor / extract into better file system
+- Tweaking, debugging, improving the styling. Debugging importing fonts.
+- Writing more unit and feature tests
+- Update README
+### Thursday
+- Tweaking and debugging final styling (back buttons, ingredients filter etc.)
+- Fix screen orientation to portrait view
+- Team reflection of the overall project
+- Presentation prep (script, powerpoint, filming the demo)
+### Friday
+- Project fair: live demos of app to visitors
+- Presentation: deliver talk on our product to audience
