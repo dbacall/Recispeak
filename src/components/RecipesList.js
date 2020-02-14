@@ -15,13 +15,13 @@ export default class RecipesList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      missingIngredientsAmount: '5+',
+      missingIngredientsAmount: '10+',
     };
   }
   
   render() {
     let element = this.props.recipesData.map((data, index) =>
-      this.state.missingIngredientsAmount === '5+' ? (
+      this.state.missingIngredientsAmount === '10+' ? (
         <TouchableOpacity
           key={index}
           onPress={() => this.props.goToIndividualRecipe(data.id)}>
@@ -147,7 +147,22 @@ export default class RecipesList extends Component {
                 value: 4,
               },
               {
-                value: '5+',
+                value: 5,
+              },
+              {
+                value: 6,
+              },
+              {
+                value: 7,
+              },
+              {
+                value: 8,
+              },
+              {
+                value: 9,
+              },
+              {
+                value: '10+',
               },
             ]}
             onChangeText={value => {
