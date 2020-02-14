@@ -139,6 +139,10 @@
 
 ### Sprint Demo 1 Coach Feedback
 <!-- Insert Jade/Julie's notes here -->
+*MVP: User can record a memo and the ingredients they mentioned are listed on screen.*
+- Our MVP was ambitious.
+- Could have broken the original image recognition idea down further, and researched scanning individual items using TensorFlow (https://www.tensorflow.org/tutorials/images/classification).
+- Testing: write feature tests and check the component renders correctly. Unit test where appropriate.
 
 ## Sprint 2
 [Monday](#monday) | [Tuesday](#tuesday) | [Wednesday](#wednesday) | [Thursday](#thursday) | [Friday](#friday) | [Sprint Demo 2 Coach Feedback](#sprint-demo-2-coach-feedback) | [Testing with Jest/Enzyme](#testing-with-jest/enzyme)
