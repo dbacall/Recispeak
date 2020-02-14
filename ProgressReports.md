@@ -18,6 +18,7 @@
 [Learning resources](#learning-resources) | [Monday](#monday) | [Exploration of Visual Recognition machine learning](#exploration-of-visual-recognition-machine-learning) | [Tuesday](#tuesday) | [Wednesday](#wednesday) | [Thursday](#thursday) | [Friday](#friday) | [Saturday](#saturday) | [Sunday](#sunday) | [Sprint Demo 1 Coach Feedback](#sprint-demo---coach-feedback)
 
 ### Learning resources
+
 #### Setup:
 
 - [EditorConfig setup](https://medium.com/fantageek/setting-up-eslint-and-editorconfig-in-react-native-projects-31b4d9ddd0f6)
@@ -66,6 +67,7 @@
 #### Reflection
 
 **Google Vision API**
+
 - Pre-trained database is useful for recognising single item in a picture
 - When trying on multiple items, it's not as accurate as we expected. It shows as 'food', 'package item', 'item'
 - 50% accuracy for testing multiple items. It's not the tool we need for the app
@@ -145,6 +147,7 @@
 - Testing: write feature tests and check the component renders correctly. Unit test where appropriate.
 
 ## Sprint 2
+
 [Monday](#monday) | [Tuesday](#tuesday) | [Wednesday](#wednesday) | [Thursday](#thursday) | [Friday](#friday) | [Sprint Demo 2 Coach Feedback](#sprint-demo-2-coach-feedback) | [Testing with Jest/Enzyme](#testing-with-jest/enzyme)
 
 ### Monday
@@ -176,6 +179,7 @@
 - Tweaking, debugging, improving the styling. Debugging importing fonts.
 - Writing more unit and feature tests
 - Update README
+
 ### Thursday
 
 - Tweaking and debugging final styling (back buttons, ingredients filter etc.)
