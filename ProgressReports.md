@@ -200,3 +200,62 @@ WENT WELL
 
 ### Testing with Jest/Enzyme
 <!-- Insert Julie's notes here -->
+
+
+## Reflection on Team Dynamics
+
+### What went well
+
+- Good time boxing, especially in Week 2 once project was off the ground.
+- Flexibility as a team; knew when to stop and move on, or when to push forward.
+- Team agreement at every point; always had team consensus when changing direction/tweaking ideas.
+- Strong communication; constantly talking and consulting each other. Always knew what others were working on.
+- Great direction and agreement in stand-ups/retros.
+- Good and clear commit messages using the semantic style.
+- Merging pull requests after a minimum of 2 reviews/approvals from other team members.
+- Team of 5 people can be good for extra research / debugging.
+
+### What could have gone better
+
+- Some pairs could have taken more breaks
+- Sometimes too rigid with our pairing; could have been more flexible with solo work.
+- Feeling behind on commits; uneven commits across the team.
+- Utilised our Trello board more (ticketing system).
+- Team of 5 people can be difficult for a strong pairing ethos as an odd number.
+
+## Reflection on React Native
+
+### Positives
+
+- Decent documentation / numerous online resources such as blogs.
+- Very flexible & developer friendly.
+- Powerful: many tools and add-ons available to scale your project.
+- Fun to learn a widely used tool and stretch yourself.
+- Great to see the product as it formed; encouraging to see the progress.
+- Can be used to scale something quickly.
+- Can be used on both IOS and Android.
+
+### Negatives
+
+- 2 weeks is short time to learn it (confusing at first) and pick the right tools.
+- Testing was also difficult to learn at first.
+- Inconsistent file structure across React Native projects online; could not find a best practise approach.
+- Sometimes you could not find a solution online (e.g. finding a straightforward navigation solution between pages).
+- Depending on how the environment is set-up, you can have bugs to fix before you've written any code (debugging in the dark as you did not right the code where the bugs are stemming from).
+
+### Expo CLI specific
+
+- set structure
+- not as flexible / limited
+- could not use React Native Voice with it
+
+### React Native CLI specific
+
+- empty canvas so very flexible
+- set up with Android Studio was very long
+- endless tools and add-ons available
+
+## Summary
+
+1. First week - learning the language; trying to understand where and how to start. Was a slow start but we worked flexibly and diligently as a team.
+2. Second week - scaling the project very quickly; adding features, styling & testing. We were very proud of how the project turned out and our ability to build it so fast.
