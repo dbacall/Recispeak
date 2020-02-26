@@ -6,6 +6,8 @@
 
 An Android app that uses voice recognition, allowing the user to list the foods in their kitchen, and see a list of recipes based on those ingredients. Designed to tackle food waste and save the user money on future food shops.
 
+Read about our process and learning experience [here](https://github.com/dbacall/Recispeak/blob/master/ProgressReports.md).
+
 ## Demo
 
 ![Recispeak Demo Gif Part 1](https://media.giphy.com/media/UqwnCxy5mrlxqemZ6R/giphy.gif) ![Recispeak Demo Gif Part 2](https://media.giphy.com/media/iDb59vn7ORd8NwBxUX/giphy.gif)
