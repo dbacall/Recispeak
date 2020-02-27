@@ -82,12 +82,14 @@
 **IBM Watson**
 
 - We realised that what we need is training our own models to upload more real-life photos as database (different angles of an item/in slightly different package)
-- 3 stage experiments:
+- 3 stage experiments:  
+
 | Experiments | Results |
 | ------------ | ------- |
 | Train 2 items | Turns out the accuracy isn't that great. It recognises tomato but not really garlic |
 | Train 5 items | Added 3 more items on the first trial. The accuracy is surprisingly great. It knows almost all the items in the clear-background images. It even recognises garlic (which was not working well on the previous experiment) |
-| Train other 5 items | We wanted to test other items and see if it works for the photos we took. This time it didn't work well when testing the pics from us. <see below> It recognised apple as orange, cannot recognise banana. The training models work well with the images from google(clear, clean background) only |
+| Train other 5 items | We wanted to test other items and see if it works for the photos we took. This time it didn't work well when testing the pics from us. <see below> It recognised apple as orange, cannot recognise banana. The training models work well with the images from google(clear, clean background) only |   
+  
 - Then we hit the free usage limit. What we'll do next is to add more pictures for each category including real life ones, so it recognises the objects as what we input.
 - For the concept of recognising ingredients through fridge photos, we found it hard with visual recognition as most of the items are wrapped in package/containers. After the research and experiments for 2 days, we decided to keep the idea of recipe generator, but using 'sound' as input - turning speech into text!
 
@@ -139,9 +141,11 @@
 - Complete navigation between components
 - Further research on how to write unit/feature tests
 
-### Sprint Demo 1 Coach Feedback
-<!-- Insert Jade/Julie's notes here -->
-*MVP: User can record a memo and the ingredients they mentioned are listed on screen.*
+### Sprint Demo 1
+
+*MVP: User can record a memo and the ingredients they mentioned are listed on screen.*  
+
+#### Coach feedback
 - Our MVP was ambitious.
 - Could have broken the original image recognition idea down further, and researched scanning individual items using TensorFlow (https://www.tensorflow.org/tutorials/images/classification).
 - Testing: write feature tests and check the component renders correctly. Unit test where appropriate.
@@ -192,14 +196,17 @@
 - Project fair: live demos of app to visitors
 - Presentation: deliver talk on our product to audience
 
-### Sprint Demo 2 Coach Feedback
+### Sprint Demo 2
 
 *Next goal: See recipe page, add ingredients manually, add filter (stretch goal)*   
 
-COULD GO BETTER
+#### Could go better
+
 - More even commits across the team
 - Update learning documentation / progress reports
-WENT WELL
+
+#### What went well
+
 - We set good deadlines / time-boxing / moved to the next part if blocked (didn't waste time if blocked for too long)
 - We went from having nothing to show, to having the entire core structure of the app!
 - Flexible to change the idea
